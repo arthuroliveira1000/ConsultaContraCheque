@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{60B8F2DE-CDFA-457B-A0DB-7C75C6A2B01D}</ProjectGuid>
+    <ProjectGuid>{9628D6B6-85A5-415F-BC5F-24142E303BD0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CWI.ContraCheque.Dominio</RootNamespace>

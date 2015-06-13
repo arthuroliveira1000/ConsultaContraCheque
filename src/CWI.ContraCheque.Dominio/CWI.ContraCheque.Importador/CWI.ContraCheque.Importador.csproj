@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DC005633-52AA-4105-A3E9-AC6A89BFB64E}</ProjectGuid>
+    <ProjectGuid>{3077C41D-ACAB-41F2-BA84-62E35BDC02B9}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CWI.ContraCheque.Importador</RootNamespace>
