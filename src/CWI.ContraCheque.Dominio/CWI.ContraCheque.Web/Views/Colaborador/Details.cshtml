@@ -1,0 +1,59 @@
+﻿@model CWI.ContraCheque.Dominio.Colaborador
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Colaborador</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoColaborador)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoColaborador)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomeColaborador)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeColaborador)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoSalario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoSalario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CentroCusto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CentroCusto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataAdmissao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataAdmissao)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

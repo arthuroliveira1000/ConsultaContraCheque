@@ -28,5 +28,13 @@ namespace CWI.ContraCheque.Web.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<CWI.ContraCheque.Dominio.Colaborador> Colaboradors { get; set; }
+
+        public System.Data.Entity.DbSet<CWI.ContraCheque.Dominio.Colaborador_Conta> Colaborador_Conta { get; set; }
+
+        public System.Data.Entity.DbSet<CWI.ContraCheque.Dominio.Conta> Contas { get; set; }
+
+        public System.Data.Entity.DbSet<CWI.ContraCheque.Dominio.ContaBancoColaboradorPagamento> ContaBancoColaboradorPagamentoes { get; set; }
     }
 }

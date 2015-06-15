@@ -17,8 +17,8 @@ namespace CWI.ContraCheque.Dominio
         //exemplo de dados em Ocorrencia = ME, eu sei que este campo participa do relacionamento entre Conta e colaborador
         //porém nem eu e nem o André sabemos o que ele é ainda, segunda teremos a resposta. Mas ele está certo aqui.
         public string Ocorrencia { get; set; }
-        //Fk de Conta
-        public long CodigoConta { get; set; }
+        //Fk de Conta, virou string pois receberemos dados por exemplo: T03
+        public string CodigoConta { get; set; }
         //Fk de Colaborador
         public long CodigoColaborador { get; set; }
     }
