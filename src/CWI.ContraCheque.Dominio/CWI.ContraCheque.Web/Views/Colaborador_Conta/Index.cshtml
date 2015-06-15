@@ -1,0 +1,58 @@
+﻿@model IEnumerable<CWI.ContraCheque.Dominio.Colaborador_Conta>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Competencia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataImportacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ocorrencia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodigoConta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodigoColaborador)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Competencia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataImportacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ocorrencia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodigoConta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodigoColaborador)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

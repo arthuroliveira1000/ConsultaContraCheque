@@ -159,10 +159,19 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ColaboradorController.cs" />
+    <Compile Include="Controllers\Colaborador_ContaController.cs" />
+    <Compile Include="Controllers\ContaBancoColaboradorPagamentoController.cs" />
+    <Compile Include="Controllers\ContaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506151817200_MigracaoInicial.cs" />
+    <Compile Include="Migrations\201506151817200_MigracaoInicial.Designer.cs">
+      <DependentUpon>201506151817200_MigracaoInicial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -218,6 +227,26 @@
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Colaborador\Create.cshtml" />
+    <Content Include="Views\Colaborador\Delete.cshtml" />
+    <Content Include="Views\Colaborador\Details.cshtml" />
+    <Content Include="Views\Colaborador\Edit.cshtml" />
+    <Content Include="Views\Colaborador\Index.cshtml" />
+    <Content Include="Views\Colaborador_Conta\Create.cshtml" />
+    <Content Include="Views\Colaborador_Conta\Delete.cshtml" />
+    <Content Include="Views\Colaborador_Conta\Details.cshtml" />
+    <Content Include="Views\Colaborador_Conta\Edit.cshtml" />
+    <Content Include="Views\Colaborador_Conta\Index.cshtml" />
+    <Content Include="Views\Conta\Create.cshtml" />
+    <Content Include="Views\Conta\Delete.cshtml" />
+    <Content Include="Views\Conta\Details.cshtml" />
+    <Content Include="Views\Conta\Edit.cshtml" />
+    <Content Include="Views\Conta\Index.cshtml" />
+    <Content Include="Views\ContaBancoColaboradorPagamento\Create.cshtml" />
+    <Content Include="Views\ContaBancoColaboradorPagamento\Delete.cshtml" />
+    <Content Include="Views\ContaBancoColaboradorPagamento\Details.cshtml" />
+    <Content Include="Views\ContaBancoColaboradorPagamento\Edit.cshtml" />
+    <Content Include="Views\ContaBancoColaboradorPagamento\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -228,6 +257,17 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CWI.ContraCheque.Dominio\CWI.ContraCheque.Dominio.csproj">
+      <Project>{9628d6b6-85a5-415f-bc5f-24142e303bd0}</Project>
+      <Name>CWI.ContraCheque.Dominio</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201506151817200_MigracaoInicial.resx">
+      <DependentUpon>201506151817200_MigracaoInicial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

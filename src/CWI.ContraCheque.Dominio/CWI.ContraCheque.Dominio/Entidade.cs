@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CWI.ContraCheque.Dominio
 {
-    class Entidade
+    public abstract class Entidade
     {
         public int Id { get; set; }
     }

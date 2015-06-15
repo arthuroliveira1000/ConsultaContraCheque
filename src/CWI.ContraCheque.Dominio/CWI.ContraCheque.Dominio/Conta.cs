@@ -8,8 +8,8 @@ namespace CWI.ContraCheque.Dominio
 {
     public class Conta : Entidade
     {
-        //CodigoConta mesmo caso do CodigoColaborador
-        public long CodigoConta { get; set; }
+        //CodigoConta mesmo caso do CodigoColaborador, virou string pois receberemos dados = "T03"
+        public string CodigoConta { get; set; }
         public string Descricao { get; set; }
         public char Tipo { get; set; }
         public decimal? Total { get; set; }
