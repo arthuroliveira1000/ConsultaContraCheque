@@ -247,6 +247,7 @@
     <Content Include="Views\ContaBancoColaboradorPagamento\Details.cshtml" />
     <Content Include="Views\ContaBancoColaboradorPagamento\Edit.cshtml" />
     <Content Include="Views\ContaBancoColaboradorPagamento\Index.cshtml" />
+    <Content Include="Views\Account\Login2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

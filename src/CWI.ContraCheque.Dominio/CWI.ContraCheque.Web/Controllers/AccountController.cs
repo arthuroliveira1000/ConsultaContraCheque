@@ -48,6 +48,15 @@ namespace CWI.ContraCheque.Web.Controllers
             return View();
         }
 
+        // Permite acessar o Login2 que é utilizado para teste de template
+        // GET: /Account/Login2
+        [AllowAnonymous]
+        public ActionResult Login2(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+
         //
         // POST: /Account/Login
         [HttpPost]
