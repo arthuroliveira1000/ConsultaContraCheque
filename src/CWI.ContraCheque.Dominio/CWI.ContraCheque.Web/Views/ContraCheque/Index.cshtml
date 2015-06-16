@@ -5,7 +5,7 @@
 }
 
 @Html.DisplayNameFor(model => model.Ocorrencia)
-@Html.DisplayFor(model => model.Ocorrencia)
+@Html.DisplayFor(model => model.Colaborador.CodigoColaborador)
 
 @Html.DisplayNameFor(model => model.Colaborador.NomeColaborador)
 @Html.DisplayFor(model => model.Colaborador.NomeColaborador)
@@ -22,4 +22,169 @@
     @Html.DisplayFor(modelcontas => contas.Descricao)
 }
     
+
+<div class="panel panel-primary contra-cheque">
+    <div class="panel-heading"><h3>Recibo de Pagamento de Salário</h3></div>
+    <div class="panel-body">
+        <table class="table table-condensed">
+
+            <tr class="active">
+                <td>
+                    <strong>Conta</strong>
+                </td>
+                <td>
+                    <strong>Nome do Funcionário</strong>
+                </td>
+                <td>
+                    <strong>Centro de Custo</strong>
+                </td>
+                <td>
+                    <strong>Data de Admissão</strong>
+                </td>
+                <td>
+                    <strong>Conta de Pagamento</strong>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h5>@Html.DisplayFor(model => model.Colaborador.CodigoColaborador)</h5>
+                </td>
+                <td>
+                    <h5>@Html.DisplayFor(model => model.Colaborador.NomeColaborador)</h5>
+                </td>
+                <td>
+                    <h5>@Html.DisplayFor(model => model.Colaborador.CentroCusto)</h5>
+                </td>
+                <td>
+                    <h5>@Html.DisplayFor(model => model.Colaborador.DataAdmissao)</h5>
+
+                </td>
+                <td>
+                    <h5>
+                        @Html.DisplayFor(model => model.BancoColaborador.NomeBanco)
+                        AG.: @Html.DisplayFor(model => model.BancoColaborador.Agencia)
+                        CONTA: @Html.DisplayFor(model => model.BancoColaborador.Conta)
+                        BANCO DO BRASIL AG.: 3334-0 CONTA : 19359-3
+                    </h5>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="panel-body">
+        <!-- Table -->
+        <table class="table table-condensed">
+            <tr class="active">
+                <td>
+                    <strong>Conta</strong>
+                </td>
+                <td>
+                    <strong>Descricão</strong>
+                </td>
+                <td>
+                    <strong>Referência</strong>
+                </td>
+                <td>
+                    <strong>Proventos</strong>
+                </td>
+                <td>
+                    <strong>Descontos</strong>
+                </td>
+
+            </tr>
+
+            @foreach (var contas in Model.Contas)
+            {
+            <!--fazer verificação de campos vazios aqui nesta linha-->
+                <tr>
+                    <td>
+                        <h5>@Html.DisplayFor(modelcontas => contas.CodigoConta)</h5>
+                    </td>
+                    <td>
+                        <h5>@Html.DisplayFor(modelcontas => contas.Descricao)</h5>
+                    </td>
+                    <td>
+                        <h5>@Html.DisplayFor(modelcontas => contas.ValorReferencia)</h5>
+                    </td>
+                    <td>
+                        <h5></h5>
+                    </td>
+                    <td>
+                        <h5>-</h5>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+
+    <div class="panel-body">
+        <!-- Table -->
+        <table class="table table-condensed">
+            <tr class="active">
+                <td>
+                    <strong>Total de Proventos</strong>
+                </td>
+                <td>
+                    <strong>Total de Descontos</strong>
+                </td>
+                <td>
+                    <strong>Valor Líquido</strong>
+                </td>
+            </tr>
+            <!--fazer verificação de campos vazios aqui nesta linha-->
+            <tr>
+                <td>
+                    <h5>932,27</h5>
+                </td>
+                <td>
+                    <h5>498,69</h5>
+                </td>
+                <td>
+                    <h5>433,58</h5>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="panel-body">
+        <!-- Table -->
+        <table class="table table-condensed">
+            <tr class="active">
+                <td>
+                    <strong>Salário Base</strong>
+                </td>
+                <td>
+                    <strong>Salário Contrib INSS</strong>
+                </td>
+                <td>
+                    <strong>Base FGTS</strong>
+                </td>
+                <td>
+                    <strong>Valor FGTS</strong>
+                </td>
+                <td>
+                    <strong>Base Cálculo IRRF</strong>
+                </td>
+            </tr>
+            <!--fazer verificação de campos vazios aqui nesta linha-->
+            <tr>
+                <td>
+                    <h5>850,00</h5>
+                </td>
+                <td>
+                    <h5>932,27</h5>
+                </td>
+                <td>
+                    <h5>932,27</h5>
+                </td>
+                <td>
+                    <h5>74,58</h5>
+                </td>
+                <td>
+                    <h5>677,98</h5>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
 

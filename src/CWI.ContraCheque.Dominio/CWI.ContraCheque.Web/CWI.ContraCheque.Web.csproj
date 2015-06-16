@@ -168,9 +168,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201506151817200_MigracaoInicial.cs" />
-    <Compile Include="Migrations\201506151817200_MigracaoInicial.Designer.cs">
-      <DependentUpon>201506151817200_MigracaoInicial.cs</DependentUpon>
+    <Compile Include="Migrations\201506161912300_MigracaoInicial.cs" />
+    <Compile Include="Migrations\201506161912300_MigracaoInicial.Designer.cs">
+      <DependentUpon>201506161912300_MigracaoInicial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -228,11 +228,6 @@
     <Content Include="Views\Colaborador_Conta\Details.cshtml" />
     <Content Include="Views\Colaborador_Conta\Edit.cshtml" />
     <Content Include="Views\Colaborador_Conta\Index.cshtml" />
-    <Content Include="Views\Conta\Create.cshtml" />
-    <Content Include="Views\Conta\Delete.cshtml" />
-    <Content Include="Views\Conta\Details.cshtml" />
-    <Content Include="Views\Conta\Edit.cshtml" />
-    <Content Include="Views\Conta\Index.cshtml" />
     <Content Include="Views\ContaBancoColaboradorPagamento\Create.cshtml" />
     <Content Include="Views\ContaBancoColaboradorPagamento\Delete.cshtml" />
     <Content Include="Views\ContaBancoColaboradorPagamento\Details.cshtml" />
@@ -240,6 +235,11 @@
     <Content Include="Views\ContaBancoColaboradorPagamento\Index.cshtml" />
     <Content Include="Views\ContraCheque\Index.cshtml" />
     <Content Include="Views\Account\Login2.cshtml" />
+    <Content Include="Views\Conta\Create.cshtml" />
+    <Content Include="Views\Conta\Delete.cshtml" />
+    <Content Include="Views\Conta\Details.cshtml" />
+    <Content Include="Views\Conta\Edit.cshtml" />
+    <Content Include="Views\Conta\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -256,10 +256,14 @@
       <Project>{9628d6b6-85a5-415f-bc5f-24142e303bd0}</Project>
       <Name>CWI.ContraCheque.Dominio</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CWI.ContraCheque.Importador\CWI.ContraCheque.Importador.csproj">
+      <Project>{21b73992-d269-4f99-82eb-22592784042f}</Project>
+      <Name>CWI.ContraCheque.Importador</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506151817200_MigracaoInicial.resx">
-      <DependentUpon>201506151817200_MigracaoInicial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201506161912300_MigracaoInicial.resx">
+      <DependentUpon>201506161912300_MigracaoInicial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
