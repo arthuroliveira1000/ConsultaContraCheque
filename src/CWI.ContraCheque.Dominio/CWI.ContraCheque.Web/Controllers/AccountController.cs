@@ -74,14 +74,13 @@ namespace CWI.ContraCheque.Web.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Invalid username or password.");
+                    ModelState.AddModelError("", "Usuário ou Senha Inválido.");
                 }
             }
 
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-
         
         //
         // POST: /Account/Disassociate
