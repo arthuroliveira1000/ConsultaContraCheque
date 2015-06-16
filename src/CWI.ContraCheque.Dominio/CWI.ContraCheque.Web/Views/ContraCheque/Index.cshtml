@@ -1,0 +1,25 @@
+﻿@model CWI.ContraCheque.Dominio.ContraChequeExibicao
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.DisplayNameFor(model => model.Ocorrencia)
+@Html.DisplayFor(model => model.Ocorrencia)
+
+@Html.DisplayNameFor(model => model.Colaborador.NomeColaborador)
+@Html.DisplayFor(model => model.Colaborador.NomeColaborador)
+
+@Html.DisplayNameFor(model => model.BancoColaborador.NomeBanco)
+@Html.DisplayFor(model => model.BancoColaborador.NomeBanco)
+
+@Html.DisplayNameFor(model => model.DataImportacao)
+@Html.DisplayFor(model => model.DataImportacao)
+
+@foreach (var contas in Model.Contas)
+{
+    @Html.DisplayNameFor(modelcontas => contas.Descricao)
+    @Html.DisplayFor(modelcontas => contas.Descricao)
+}
+    
+

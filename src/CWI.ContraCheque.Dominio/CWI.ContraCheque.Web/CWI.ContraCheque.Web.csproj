@@ -163,6 +163,7 @@
     <Compile Include="Controllers\Colaborador_ContaController.cs" />
     <Compile Include="Controllers\ContaBancoColaboradorPagamentoController.cs" />
     <Compile Include="Controllers\ContaController.cs" />
+    <Compile Include="Controllers\ContraChequeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -246,6 +247,7 @@
     <Content Include="Views\ContaBancoColaboradorPagamento\Details.cshtml" />
     <Content Include="Views\ContaBancoColaboradorPagamento\Edit.cshtml" />
     <Content Include="Views\ContaBancoColaboradorPagamento\Index.cshtml" />
+    <Content Include="Views\ContraCheque\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

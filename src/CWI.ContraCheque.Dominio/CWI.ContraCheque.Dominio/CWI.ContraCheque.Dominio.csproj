@@ -43,6 +43,7 @@
     <Compile Include="Colaborador_Conta.cs" />
     <Compile Include="Conta.cs" />
     <Compile Include="ContaBancoColaboradorPagamento.cs" />
+    <Compile Include="ContraChequeExibicao.cs" />
     <Compile Include="Entidade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
