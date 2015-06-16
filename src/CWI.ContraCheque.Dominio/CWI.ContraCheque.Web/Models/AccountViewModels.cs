@@ -49,6 +49,14 @@ namespace CWI.ContraCheque.Web.Models
 
     }
 
+    public class ForgotPasswordViewModel
+    {
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+    }
+
     public class RegisterViewModel
     {
         [Required]
@@ -76,5 +84,18 @@ namespace CWI.ContraCheque.Web.Models
         [Display(Name = "Password")]
         public string Password { get; set; }
         public string Code { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm password")]
+        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        public string ConfirmPassword { get; set; }
+
+        public class ForgotPasswordViewModel
+        {
+            [Required]
+            [EmailAddress]
+            [Display(Name = "Email")]
+            public string Email { get; set; }
+        }
     }
 }
