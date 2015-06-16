@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CWI.ContraCheque.Importador;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,7 @@ namespace CWI.ContraCheque.Web.Controllers
     {
         public ActionResult Index()
         {
+            ImportaContraCheque importa = new ImportaContraCheque();
             return View();
         }
 
