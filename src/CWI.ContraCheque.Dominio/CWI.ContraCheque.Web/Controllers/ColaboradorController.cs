@@ -18,7 +18,8 @@ namespace CWI.ContraCheque.Web.Controllers
         // GET: Colaborador
         public ActionResult Index()
         {
-            return View(db.Colaboradors.ToList());
+            //db.Colaboradors.ToList()
+            return View();
         }
 
         // GET: Colaborador/Details/5
