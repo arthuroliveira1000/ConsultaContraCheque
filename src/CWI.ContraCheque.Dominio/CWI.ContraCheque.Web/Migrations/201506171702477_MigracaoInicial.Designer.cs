@@ -13,7 +13,7 @@ namespace CWI.ContraCheque.Web.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201506151817200_MigracaoInicial"; }
+            get { return "201506171702477_MigracaoInicial"; }
         }
         
         string IMigrationMetadata.Source
