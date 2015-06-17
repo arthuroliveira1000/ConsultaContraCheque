@@ -81,7 +81,31 @@ namespace CWI.ContraCheque.Web.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-        
+
+        //
+        // POST: /Account/Login2
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Login2(LoginViewModel model, string returnUrl)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await UserManager.FindAsync(model.Email, model.Password);
+                if (user != null)
+                {
+                    return RedirectToLocal(returnUrl);
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Usuário ou Senha Inválido.");
+                }
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
         //
         // POST: /Account/Disassociate
         [HttpPost]

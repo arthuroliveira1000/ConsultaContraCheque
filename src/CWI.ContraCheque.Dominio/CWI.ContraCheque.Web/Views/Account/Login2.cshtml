@@ -1,5 +1,6 @@
-@using CWI.ContraCheque.Web.Models
+﻿@using CWI.ContraCheque.Web.Models
 @model LoginViewModel
+
 @{
     ViewBag.Title = "Log in";
     Layout = "";
@@ -17,25 +18,29 @@
 <body background="~/Content/Images/swirl_pattern.png">
     <div class="container Box1">
         <section id="loginForm">
-                <div class="Box2">
-                    <div>
-                        <img src="~/Content/Images/cwi_logo.png" alt="CWI Software Login" align="middle">
-                    </div>
-
-                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-signin", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <br>
-                        <label for="inputEmail" class="sr-only">Login</label>
-                        <input type="email" id="inputEmail" class="form-control" placeholder="E-mail" required autofocus>
-                        <br>
-                        <label for="inputPassword" class="sr-only">Senha</label>
-                        <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required>
-                        <br>
-                        <button class="btn btn-lg btn-primary BotaoLogin" type="submit" style="margin-bottom:30px;">Entrar</button>
-                        <br>
-                    }
+            <div class="Box2">
+                <div>
+                    <img src="~/Content/Images/cwi_logo.png" alt="CWI Software Login" align="middle">
                 </div>
+
+                @using (Html.BeginForm("Login2", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-signin", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <br>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <label for="inputEmail" class="sr-only">Login</label>
+                    <input type="Email" id="Email" class="form-control" placeholder="E-mail" name="Email" required autofocus>
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    <br>
+                    <label for="inputPassword" class="sr-only">Senha</label>
+                    <input type="password" id="inputPassword" class="form-control" name="Password" placeholder="Senha" required>
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    <br>
+                        <!--<button class="btn btn-lg btn-primary BotaoLogin" type="submit" style="margin-bottom:30px;">Entrar</button>-->
+                    <input type="submit" value="Log in" class="btn btn-lg btn-primary BotaoLogin" />
+                    <br>
+                }
+            </div>
         </section>
     </div>
 </body>
