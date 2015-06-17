@@ -53,9 +53,9 @@ namespace CWI.ContraCheque.Web.Controllers
                                          Ocorrencia = contaColaborador.Ocorrencia
                                      };
             List<Colaborador_Conta> colConta = res.ToList();
-            contraChequeExibicao.Competencia = colConta[0].Competencia;
-            contraChequeExibicao.DataImportacao = colConta[0].DataImportacao;
-            contraChequeExibicao.Ocorrencia = colConta[0].Ocorrencia;
+            //contraChequeExibicao.Competencia = colConta[0].Competencia;
+            //contraChequeExibicao.DataImportacao = colConta[0].DataImportacao;
+            //contraChequeExibicao.Ocorrencia = colConta[0].Ocorrencia;
 
             return View(contraChequeExibicao);
         }
