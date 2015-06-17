@@ -1,5 +1,58 @@
 ﻿@model CWI.ContraCheque.Dominio.ContraChequeExibicao
 
+@{
+    string totalProventos = "";
+    string totalDescontos = "";
+    string totalLiquido = "";
+
+    string SALARIO_BASE = "";
+    string SALARIO_CONTRIBINSS = "";
+    string FGTS_BASE = "";
+    string FGTS_TOTAL = "";
+    string IRRF_BASE = "";
+
+
+    foreach (var contas in Model.Contas)
+    {
+        if (contas.Descricao.Equals("TOTAL PROVENTOS") && contas.Tipo.Equals("T"))
+        {
+            totalProventos = contas.Total.ToString();
+        }
+        if (contas.Descricao.Equals("TOTAL DESCONTOS") && contas.Tipo.Equals("T"))
+        {
+            totalDescontos = contas.Total.ToString();
+        }
+        if (contas.Descricao.Equals("TOTAL LIQUIDO") && contas.Tipo.Equals("L"))
+        {
+            totalLiquido = contas.Total.ToString();
+        }
+                        <!--SALARIOS-->
+
+        if (contas.Descricao.Equals("SALARIO FOLHA MENSAL") && contas.Tipo.Equals("T"))
+        {
+            SALARIO_BASE = contas.Base.ToString();
+        }
+        if (contas.Descricao.Equals("INSS") && contas.Tipo.Equals("T"))
+        {
+            SALARIO_CONTRIBINSS = contas.Total.ToString();
+        }
+        if (contas.Descricao.Equals("FGTS") && contas.Tipo.Equals("T"))
+        {
+            FGTS_BASE = contas.Base.ToString();
+        }
+
+        if (contas.Descricao.Equals("FGTS") && contas.Tipo.Equals("T"))
+        {
+            FGTS_TOTAL = contas.Total.ToString();
+        }
+        if (contas.Descricao.Equals("IRRF") && contas.Tipo.Equals("T"))
+        {
+            IRRF_BASE = contas.Base.ToString();
+        }
+
+    }
+}
+
 
 <!--CONTRA CHEQUE-->
 
@@ -100,7 +153,7 @@
             }
         </table>
     </div>
-
+    <!--TOTAIS-->
     <div class="panel-body">
         <!-- Table -->
         <table class="table table-condensed">
@@ -116,30 +169,19 @@
                     <strong>Valor Líquido</strong>
                 </td>
             </tr>
-            <!--fazer verificação de campos vazios aqui nesta linha-->
-            @foreach (var contas in Model.Contas)
-            {
-                <tr>
-                    <td>
-                        @if (contas.Descricao.Equals("TOTAL PROVENTOS") && contas.Tipo.Equals("T"))
-                        {
-                            <h5>@Html.DisplayFor(modelcontas => contas.Total)</h5>
-                        }
-                    </td>
-                    <td>
-                        @if (contas.Descricao.Equals("TOTAL DESCONTOS") && contas.Tipo.Equals("T"))
-                        {
-                            <h5>@Html.DisplayFor(modelcontas => contas.Total)</h5>
-                        }
-                    </td>
-                    <td>
-                        @if (contas.Descricao.Equals("TOTAL LIQUIDO") && contas.Tipo.Equals("L"))
-                        {
-                            <h5>@Html.DisplayFor(modelcontas => contas.Total)</h5>
-                        }
-                    </td>
-                </tr>
-            }
+            <tr>
+
+                <td>
+                    <h5>@totalProventos</h5>
+                </td>
+                <td>
+                    <h5>@totalDescontos</h5>
+                </td>
+                <td>
+                    <h5>@totalLiquido</h5>
+                </td>
+
+            </tr>
         </table>
     </div>
 
@@ -163,56 +205,13 @@
                     <strong>Base Cálculo IRRF</strong>
                 </td>
             </tr>
-            @foreach (var contas in Model.Contas)
-            {
- 
-                    <tr>
-
-                        @if (contas.Descricao.Equals("SALARIO FOLHA MENSAL") && contas.Tipo.Equals("T"))
-                        {
-                            <td>
-                                <h5>@Html.DisplayFor(modelcontas => contas.Total)</h5>
-                            </td>
-                        }
-
-                        <td>
-                            @if (contas.Descricao.Equals("INSS") && contas.Tipo.Equals("T"))
-                            {
-                                <h5>@Html.DisplayFor(modelcontas => contas.Base)</h5>
-
-                            }
-                        </td>
-                        <td>
-                            @if (contas.Descricao.Equals("FGTS") && contas.Tipo.Equals("T"))
-                            {
-                                <h5>@Html.DisplayFor(modelcontas => contas.Base)</h5>
-
-                            }
-                        </td>
-
-                        <td>
-                            @if (contas.Descricao.Equals("INSS A RECOLHER") && contas.Tipo.Equals("T"))
-                            {
-                                <h5>@Html.DisplayFor(modelcontas => contas.Total)</h5>
-
-                            }
-                        </td>
-                        <td>
-                            @if (contas.Descricao.Equals("FGTS") && contas.Tipo.Equals("T"))
-                            {
-                                <h5>@Html.DisplayFor(modelcontas => contas.Total)</h5>
-
-                            }
-                        </td>
-                        <td>
-                            @if (contas.Descricao.Equals("IRRF") && contas.Tipo.Equals("T"))
-                            {
-                                <h5>@Html.DisplayFor(modelcontas => contas.Base)</h5>
-                            }
-                        </td>
-                    </tr>
-                
-            }
+            <tr>
+                <td>@SALARIO_BASE</td>
+                <td>@SALARIO_CONTRIBINSS</td>
+                <td>@FGTS_BASE</td>
+                <td>@FGTS_TOTAL</td>
+                <td>@IRRF_BASE</td>
+            </tr>
         </table>
     </div>
 </div>
