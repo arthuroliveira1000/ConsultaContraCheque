@@ -168,9 +168,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201506161912300_MigracaoInicial.cs" />
-    <Compile Include="Migrations\201506161912300_MigracaoInicial.Designer.cs">
-      <DependentUpon>201506161912300_MigracaoInicial.cs</DependentUpon>
+    <Compile Include="Migrations\201506161926258_MigraçãoInicial.cs" />
+    <Compile Include="Migrations\201506161926258_MigraçãoInicial.Designer.cs">
+      <DependentUpon>201506161926258_MigraçãoInicial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -182,6 +182,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Colaborador.css" />
+    <Content Include="Content\Images\cwi_logo.png" />
+    <Content Include="Content\Images\swirl_pattern.png" />
     <Content Include="Content\Login.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -240,6 +242,7 @@
     <Content Include="Views\Conta\Details.cshtml" />
     <Content Include="Views\Conta\Edit.cshtml" />
     <Content Include="Views\Conta\Index.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -262,8 +265,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506161912300_MigracaoInicial.resx">
-      <DependentUpon>201506161912300_MigracaoInicial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201506161926258_MigraçãoInicial.resx">
+      <DependentUpon>201506161926258_MigraçãoInicial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

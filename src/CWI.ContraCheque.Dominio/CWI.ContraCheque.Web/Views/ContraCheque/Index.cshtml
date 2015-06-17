@@ -1,33 +1,12 @@
 ﻿@model CWI.ContraCheque.Dominio.ContraChequeExibicao
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
 
-@Html.DisplayNameFor(model => model.Ocorrencia)
-@Html.DisplayFor(model => model.Colaborador.CodigoColaborador)
 
-@Html.DisplayNameFor(model => model.Colaborador.NomeColaborador)
-@Html.DisplayFor(model => model.Colaborador.NomeColaborador)
+<!--CONTRA CHEQUE-->
 
-@Html.DisplayNameFor(model => model.BancoColaborador.NomeBanco)
-@Html.DisplayFor(model => model.BancoColaborador.NomeBanco)
-
-@Html.DisplayNameFor(model => model.DataImportacao)
-@Html.DisplayFor(model => model.DataImportacao)
-
-@foreach (var contas in Model.Contas)
-{
-    @Html.DisplayNameFor(modelcontas => contas.Descricao)
-    @Html.DisplayFor(modelcontas => contas.Descricao)
-}
-    
-
-<div class="panel panel-primary contra-cheque">
+<div class="panel panel-default contra-cheque">
     <div class="panel-heading"><h3>Recibo de Pagamento de Salário</h3></div>
     <div class="panel-body">
         <table class="table table-condensed">
-
             <tr class="active">
                 <td>
                     <strong>Conta</strong>
@@ -57,14 +36,12 @@
                 </td>
                 <td>
                     <h5>@Html.DisplayFor(model => model.Colaborador.DataAdmissao)</h5>
-
                 </td>
                 <td>
                     <h5>
                         @Html.DisplayFor(model => model.BancoColaborador.NomeBanco)
                         AG.: @Html.DisplayFor(model => model.BancoColaborador.Agencia)
                         CONTA: @Html.DisplayFor(model => model.BancoColaborador.Conta)
-                        BANCO DO BRASIL AG.: 3334-0 CONTA : 19359-3
                     </h5>
                 </td>
             </tr>
@@ -91,27 +68,35 @@
                 </td>
 
             </tr>
-
             @foreach (var contas in Model.Contas)
             {
-            <!--fazer verificação de campos vazios aqui nesta linha-->
-                <tr>
-                    <td>
-                        <h5>@Html.DisplayFor(modelcontas => contas.CodigoConta)</h5>
-                    </td>
-                    <td>
-                        <h5>@Html.DisplayFor(modelcontas => contas.Descricao)</h5>
-                    </td>
-                    <td>
-                        <h5>@Html.DisplayFor(modelcontas => contas.ValorReferencia)</h5>
-                    </td>
-                    <td>
-                        <h5></h5>
-                    </td>
-                    <td>
-                        <h5>-</h5>
-                    </td>
-                </tr>
+                if (!contas.Tipo.Equals("T") && !contas.Tipo.Equals("L"))
+                {
+                    <tr>
+                        <td>
+                            <h5>@Html.DisplayFor(modelcontas => contas.CodigoConta)</h5>
+                        </td>
+                        <td>
+                            <h5>@Html.DisplayFor(modelcontas => contas.Descricao)</h5>
+                        </td>
+                        <td>
+                            <h5>@Html.DisplayFor(modelcontas => contas.ValorReferencia)</h5>
+                        </td>
+                        <td>
+                            @if (contas.Tipo.Equals("P"))
+                            {
+                                <h5>@Html.DisplayFor(modelcontas => contas.Total)</h5>
+                            }
+                        </td>
+                        <td>
+                            @if (contas.Tipo.Equals("D"))
+                            {
+                                <h5>@Html.DisplayFor(modelcontas => contas.Total)</h5>
+                            }
+                        </td>
+                    </tr>
+                }
+
             }
         </table>
     </div>
@@ -120,6 +105,7 @@
         <!-- Table -->
         <table class="table table-condensed">
             <tr class="active">
+
                 <td>
                     <strong>Total de Proventos</strong>
                 </td>
@@ -131,17 +117,29 @@
                 </td>
             </tr>
             <!--fazer verificação de campos vazios aqui nesta linha-->
-            <tr>
-                <td>
-                    <h5>932,27</h5>
-                </td>
-                <td>
-                    <h5>498,69</h5>
-                </td>
-                <td>
-                    <h5>433,58</h5>
-                </td>
-            </tr>
+            @foreach (var contas in Model.Contas)
+            {
+                <tr>
+                    <td>
+                        @if (contas.Descricao.Equals("TOTAL PROVENTOS") && contas.Tipo.Equals("T"))
+                        {
+                            <h5>@Html.DisplayFor(modelcontas => contas.Total)</h5>
+                        }
+                    </td>
+                    <td>
+                        @if (contas.Descricao.Equals("TOTAL DESCONTOS") && contas.Tipo.Equals("T"))
+                        {
+                            <h5>@Html.DisplayFor(modelcontas => contas.Total)</h5>
+                        }
+                    </td>
+                    <td>
+                        @if (contas.Descricao.Equals("TOTAL LIQUIDO") && contas.Tipo.Equals("L"))
+                        {
+                            <h5>@Html.DisplayFor(modelcontas => contas.Total)</h5>
+                        }
+                    </td>
+                </tr>
+            }
         </table>
     </div>
 
@@ -165,26 +163,56 @@
                     <strong>Base Cálculo IRRF</strong>
                 </td>
             </tr>
-            <!--fazer verificação de campos vazios aqui nesta linha-->
-            <tr>
-                <td>
-                    <h5>850,00</h5>
-                </td>
-                <td>
-                    <h5>932,27</h5>
-                </td>
-                <td>
-                    <h5>932,27</h5>
-                </td>
-                <td>
-                    <h5>74,58</h5>
-                </td>
-                <td>
-                    <h5>677,98</h5>
-                </td>
-            </tr>
+            @foreach (var contas in Model.Contas)
+            {
+ 
+                    <tr>
+
+                        @if (contas.Descricao.Equals("SALARIO FOLHA MENSAL") && contas.Tipo.Equals("T"))
+                        {
+                            <td>
+                                <h5>@Html.DisplayFor(modelcontas => contas.Total)</h5>
+                            </td>
+                        }
+
+                        <td>
+                            @if (contas.Descricao.Equals("INSS") && contas.Tipo.Equals("T"))
+                            {
+                                <h5>@Html.DisplayFor(modelcontas => contas.Base)</h5>
+
+                            }
+                        </td>
+                        <td>
+                            @if (contas.Descricao.Equals("FGTS") && contas.Tipo.Equals("T"))
+                            {
+                                <h5>@Html.DisplayFor(modelcontas => contas.Base)</h5>
+
+                            }
+                        </td>
+
+                        <td>
+                            @if (contas.Descricao.Equals("INSS A RECOLHER") && contas.Tipo.Equals("T"))
+                            {
+                                <h5>@Html.DisplayFor(modelcontas => contas.Total)</h5>
+
+                            }
+                        </td>
+                        <td>
+                            @if (contas.Descricao.Equals("FGTS") && contas.Tipo.Equals("T"))
+                            {
+                                <h5>@Html.DisplayFor(modelcontas => contas.Total)</h5>
+
+                            }
+                        </td>
+                        <td>
+                            @if (contas.Descricao.Equals("IRRF") && contas.Tipo.Equals("T"))
+                            {
+                                <h5>@Html.DisplayFor(modelcontas => contas.Base)</h5>
+                            }
+                        </td>
+                    </tr>
+                
+            }
         </table>
     </div>
 </div>
-
-
