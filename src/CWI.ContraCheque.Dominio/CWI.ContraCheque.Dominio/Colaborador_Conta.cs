@@ -21,5 +21,10 @@ namespace CWI.ContraCheque.Dominio
         public string CodigoConta { get; set; }
         //Fk de Colaborador
         public long CodigoColaborador { get; set; }
+
+        public Colaborador_Conta()
+        {
+            DataImportacao = DateTime.Now;
+        }
     }
 }
