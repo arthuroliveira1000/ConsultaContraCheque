@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Index</h2>
+
+    <input type="text" id="competencia" name="competencia" placeholder="Exemplo: 07/2014" required=""/>    
+    <input type="button" value="importa" onclick="importa()"/>
+
+
+    @section Scripts {
+        <script>           
+    var importa = function () {
+        alert('oi');
+        $.post('@Url.Action("Importa", "ImportacaoContraCheque")',
+            { competencia: $("#competencia").val() })
+        .done(function () {
+            alert('camigol');
+        })
+    }
+        </script>
+    }

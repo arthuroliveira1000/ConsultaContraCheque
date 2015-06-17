@@ -50,7 +50,7 @@ namespace CWI.ContraCheque.Web.Controllers
         public ActionResult Create([Bind(Include = "Id,CodigoConta,Descricao,Tipo,Total,Base,ValorReferencia")] Conta conta)
         {
             if (ModelState.IsValid)
-            {
+            {                
                 db.Contas.Add(conta);
                 db.SaveChanges();
                 return RedirectToAction("Index");

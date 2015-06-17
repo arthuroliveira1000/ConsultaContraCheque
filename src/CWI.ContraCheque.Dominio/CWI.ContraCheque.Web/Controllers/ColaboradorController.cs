@@ -53,7 +53,7 @@ namespace CWI.ContraCheque.Web.Controllers
             if (ModelState.IsValid)
             {
                 db.Colaboradors.Add(colaborador);
-                db.SaveChanges();
+                db.SaveChanges();                
                 return RedirectToAction("Index");
             }
 
