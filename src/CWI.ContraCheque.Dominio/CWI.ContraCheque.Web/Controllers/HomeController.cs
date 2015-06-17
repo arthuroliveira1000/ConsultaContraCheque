@@ -20,5 +20,10 @@ namespace CWI.ContraCheque.Web.Controllers
 
             return View();
         }
+
+        public ActionResult Welcome()
+        {
+            return View();
+        }
     }
 }

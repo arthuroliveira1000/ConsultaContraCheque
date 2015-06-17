@@ -242,6 +242,7 @@
     <Content Include="Views\Conta\Edit.cshtml" />
     <Content Include="Views\Conta\Index.cshtml" />
     <Content Include="Views\ImportacaoContraCheque\Index.cshtml" />
+    <Content Include="Views\Home\Welcome.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
