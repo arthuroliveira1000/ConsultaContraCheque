@@ -94,6 +94,7 @@ namespace CWI.ContraCheque.Web.Controllers
                 var user = await UserManager.FindAsync(model.Email, model.Password);
                 if (user != null)
                 {
+                    await SignInAsync(user, true);
                     return RedirectToLocal(returnUrl);
                 }
                 else
@@ -592,6 +593,7 @@ namespace CWI.ContraCheque.Web.Controllers
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
         }
+
         #endregion
     }
 }
