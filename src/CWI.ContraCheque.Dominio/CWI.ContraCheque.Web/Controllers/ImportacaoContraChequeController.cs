@@ -90,6 +90,7 @@ namespace CWI.ContraCheque.Web.Controllers
                                              where contas_colaborador.Competencia.Month == mes
                                              where contas_colaborador.Competencia.Year == ano
                                              join contaBanco in db.Contas on contas_colaborador.CodigoConta equals contaBanco.CodigoConta
+                                             where contaBanco.Competencia == competencia
                                              select new
                                              {
                                                  contas_colaborador,

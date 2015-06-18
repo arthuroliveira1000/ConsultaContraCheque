@@ -92,7 +92,7 @@ namespace CWI.ContraCheque.Importador
             ListaContas.Add(conta);
             ListaColaborador_Conta.Add(colaborador_conta);
         }
-        private static Conta ConverteParaConta(string codigoConta, string valorReferencia, string valorBase, string valorTotal, string tipo, string descricao)
+        private Conta ConverteParaConta(string codigoConta, string valorReferencia, string valorBase, string valorTotal, string tipo, string descricao)
         {
             codigoConta = codigoConta.Trim();
             valorReferencia = valorReferencia.Trim();
@@ -107,7 +107,8 @@ namespace CWI.ContraCheque.Importador
             conta.Base = ConverteDecimal(valorBase);
             conta.Total = ConverteDecimal(valorTotal);
             conta.Tipo = tipo;
-            conta.Descricao = descricao;            
+            conta.Descricao = descricao;
+            conta.Competencia = Competencia;
             return conta;
         }
         private Colaborador_Conta ConverteParaColaborador_Conta(string codigoColaborador, string codigoConta, string ocorrencia)
