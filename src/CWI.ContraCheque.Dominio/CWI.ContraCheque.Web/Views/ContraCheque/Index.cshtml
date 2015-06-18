@@ -4,57 +4,46 @@
     string totalProventos = "";
     string totalDescontos = "";
     string totalLiquido = "";
-
     string SALARIO_BASE = "";
     string SALARIO_CONTRIBINSS = "";
-    string FGTS_BASE = "";
     string FGTS_TOTAL = "";
+    string FGTS_BASE = "";
     string IRRF_BASE = "";
 
 
     foreach (var contas in Model.Contas)
     {
-        if (contas.Descricao.Equals("TOTAL PROVENTOS") && contas.Tipo.Equals("T"))
+        if (contas.Descricao.Contains("TOTAL PROVENTOS") && contas.Tipo.Contains("T"))
         {
             totalProventos = contas.Total.ToString();
         }
-        if (contas.Descricao.Equals("TOTAL DESCONTOS") && contas.Tipo.Equals("T"))
+        if (contas.Descricao.Contains("TOTAL DESCONTOS") && contas.Tipo.Contains("T"))
         {
             totalDescontos = contas.Total.ToString();
         }
-        if (contas.Descricao.Equals("TOTAL LIQUIDO") && contas.Tipo.Equals("L"))
+        if (contas.Descricao.Contains("TOTAL LIQUIDO") && contas.Tipo.Contains("L"))
         {
             totalLiquido = contas.Total.ToString();
         }
-                        <!--SALARIOS-->
-
-        if (contas.Descricao.Equals("SALARIO FOLHA MENSAL") && contas.Tipo.Equals("T"))
+        if (contas.Descricao.Contains("Salario folha mensal") && contas.Tipo.Contains("T"))
         {
-            SALARIO_BASE = contas.Base.ToString();
+            SALARIO_BASE = contas.Total.ToString();
         }
-        if (contas.Descricao.Equals("INSS") && contas.Tipo.Equals("T"))
+        if (contas.Descricao.Contains("INSS") && contas.Tipo.Contains("D"))
         {
-            SALARIO_CONTRIBINSS = contas.Total.ToString();
+            SALARIO_CONTRIBINSS = contas.Base.ToString();
         }
-        if (contas.Descricao.Equals("FGTS") && contas.Tipo.Equals("T"))
-        {
-            FGTS_BASE = contas.Base.ToString();
-        }
-
-        if (contas.Descricao.Equals("FGTS") && contas.Tipo.Equals("T"))
+        if (contas.Descricao.Contains("FGTS") && contas.Tipo.Contains("T"))
         {
             FGTS_TOTAL = contas.Total.ToString();
+            FGTS_BASE = contas.Base.ToString();
         }
-        if (contas.Descricao.Equals("IRRF") && contas.Tipo.Equals("T"))
+        if (contas.Descricao.Contains("IRRF") && contas.Tipo.Contains("D"))
         {
             IRRF_BASE = contas.Base.ToString();
         }
-
     }
 }
-
-
-<!--CONTRA CHEQUE-->
 
 <div class="panel panel-default contra-cheque">
     <div class="panel-heading"><h3>Recibo de Pagamento de Salário</h3></div>
@@ -79,23 +68,21 @@
             </tr>
             <tr>
                 <td>
-                    <h5>@Html.DisplayFor(model => model.Colaborador.CodigoColaborador)</h5>
+                    @Html.DisplayFor(model => model.Colaborador.CodigoColaborador)
                 </td>
                 <td>
-                    <h5>@Html.DisplayFor(model => model.Colaborador.NomeColaborador)</h5>
+                    @Html.DisplayFor(model => model.Colaborador.NomeColaborador)
                 </td>
                 <td>
-                    <h5>@Html.DisplayFor(model => model.Colaborador.CentroCusto)</h5>
+                    @Html.DisplayFor(model => model.Colaborador.CentroCusto)
                 </td>
                 <td>
-                    <h5>@Html.DisplayFor(model => model.Colaborador.DataAdmissao)</h5>
+                    @Html.DisplayFor(model => model.Colaborador.DataAdmissao)
                 </td>
                 <td>
-                    <h5>
-                        @Html.DisplayFor(model => model.BancoColaborador.NomeBanco)
-                        AG.: @Html.DisplayFor(model => model.BancoColaborador.Agencia)
-                        CONTA: @Html.DisplayFor(model => model.BancoColaborador.Conta)
-                    </h5>
+                    @Html.DisplayFor(model => model.BancoColaborador.NomeBanco)
+                    AG.: @Html.DisplayFor(model => model.BancoColaborador.Agencia)
+                    CONTA: @Html.DisplayFor(model => model.BancoColaborador.Conta)
                 </td>
             </tr>
         </table>
@@ -123,28 +110,28 @@
             </tr>
             @foreach (var contas in Model.Contas)
             {
-                if (!contas.Tipo.Equals("T") && !contas.Tipo.Equals("L"))
+                if (!contas.Tipo.Contains("T") && !contas.Tipo.Contains("L") && (contas.Total != null || contas.ValorReferencia != null))
                 {
                     <tr>
                         <td>
-                            <h5>@Html.DisplayFor(modelcontas => contas.CodigoConta)</h5>
+                            @Html.DisplayFor(modelcontas => contas.CodigoConta)
                         </td>
                         <td>
-                            <h5>@Html.DisplayFor(modelcontas => contas.Descricao)</h5>
+                            @Html.DisplayFor(modelcontas => contas.Descricao)
                         </td>
                         <td>
-                            <h5>@Html.DisplayFor(modelcontas => contas.ValorReferencia)</h5>
+                            @Html.DisplayFor(modelcontas => contas.ValorReferencia)
                         </td>
                         <td>
                             @if (contas.Tipo.Equals("P"))
                             {
-                                <h5>@Html.DisplayFor(modelcontas => contas.Total)</h5>
+                                @Html.DisplayFor(modelcontas => contas.Total)
                             }
                         </td>
                         <td>
                             @if (contas.Tipo.Equals("D"))
                             {
-                                <h5>@Html.DisplayFor(modelcontas => contas.Total)</h5>
+                                @Html.DisplayFor(modelcontas => contas.Total)
                             }
                         </td>
                     </tr>
@@ -172,13 +159,13 @@
             <tr>
 
                 <td>
-                    <h5>@totalProventos</h5>
+                    @totalProventos
                 </td>
                 <td>
-                    <h5>@totalDescontos</h5>
+                    @totalDescontos
                 </td>
                 <td>
-                    <h5>@totalLiquido</h5>
+                    @totalLiquido
                 </td>
 
             </tr>
@@ -206,11 +193,21 @@
                 </td>
             </tr>
             <tr>
-                <td>@SALARIO_BASE</td>
-                <td>@SALARIO_CONTRIBINSS</td>
-                <td>@FGTS_BASE</td>
-                <td>@FGTS_TOTAL</td>
-                <td>@IRRF_BASE</td>
+                <td>
+                    @SALARIO_BASE
+                </td>
+                <td>
+                    @SALARIO_CONTRIBINSS
+                </td>
+                <td>
+                    @FGTS_BASE
+                </td>
+                <td>
+                    @FGTS_TOTAL
+                </td>
+                <td>
+                    @IRRF_BASE
+                </td>
             </tr>
         </table>
     </div>
