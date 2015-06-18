@@ -1,23 +1,57 @@
-﻿using System;
+﻿using CWI.ContraCheque.Dominio;
+using CWI.ContraCheque.Web.Models;
+using Microsoft.AspNet.Identity.Owin;
+using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using CWI.ContraCheque.Dominio;
-using CWI.ContraCheque.Web.Models;
+using Microsoft.AspNet.Identity;
 
 namespace CWI.ContraCheque.Web.Controllers
 {
-    [Authorize(Roles = "normal")]
     public class ContraChequeController : Controller
     {
+        private ApplicationUserManager _userManager;
+
+        public ContraChequeController()
+        {
+        }
+
+        public ContraChequeController(ApplicationUserManager userManager)
+        {
+            UserManager = userManager;
+        }
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
+
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: ContraCheque
+
+        private bool VerificaUsuarioComum()
+        {
+            var userId = User.Identity.GetUserId();
+            var user = UserManager.FindById(userId);
+            return user.Roles.Any(x => x.RoleId == "2");
+        }
+
         public ActionResult Index()
         {
+            if (!VerificaUsuarioComum())
+            {
+                return RedirectToAction("Login2", "Account");
+            }   
+
             string competencia = "";
             DateTime comp;
             if (competencia.Equals(""))

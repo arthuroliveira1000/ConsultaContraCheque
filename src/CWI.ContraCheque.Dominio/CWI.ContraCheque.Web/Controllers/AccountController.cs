@@ -93,8 +93,10 @@ namespace CWI.ContraCheque.Web.Controllers
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindAsync(model.Email, model.Password);
+                
                 if (user != null)
                 {
+                    await SignInAsync(user, true);
                     //Verifica se o usuário é da role Admin
                     if (user.Roles.Any(x => x.RoleId == "1"))
                     {

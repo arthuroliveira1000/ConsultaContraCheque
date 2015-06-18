@@ -4,7 +4,6 @@ namespace CWI.ContraCheque.Web.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
-    using System.Web.Security;
 
     internal sealed class Configuration : DbMigrationsConfiguration<CWI.ContraCheque.Web.Models.ApplicationDbContext>
     {
@@ -27,8 +26,6 @@ namespace CWI.ContraCheque.Web.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-            //Roles.CreateRole("sysadmin");
-            //Roles.AddUserToRole("adm@adm.adm", "sysadmin");
         }
     }
 }
