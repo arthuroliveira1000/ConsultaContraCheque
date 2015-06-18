@@ -12,6 +12,7 @@ using Microsoft.Owin.Security;
 using Owin;
 using CWI.ContraCheque.Web.Models;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Security;
 
 namespace CWI.ContraCheque.Web.Controllers
 {
@@ -94,8 +95,17 @@ namespace CWI.ContraCheque.Web.Controllers
                 var user = await UserManager.FindAsync(model.Email, model.Password);
                 if (user != null)
                 {
-                    await SignInAsync(user, true);
-                    return RedirectToLocal(returnUrl);
+                    //Verifica se o usuário é da role Admin
+                    if (user.Roles.Any(x => x.RoleId == "1"))
+                    {
+                       // return RedirectToLocal("ImportacaoContraCheque");
+                        return RedirectToAction("/ImportacaoContraCheque");
+                    }
+                    else
+                    {
+                        //return RedirectToLocal("ContraCheque");
+                        return RedirectToAction("/ContraCheque");
+                    }
                 }
                 else
                 {
