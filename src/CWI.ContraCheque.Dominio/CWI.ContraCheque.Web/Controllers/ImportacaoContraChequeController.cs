@@ -44,12 +44,11 @@ namespace CWI.ContraCheque.Web.Controllers
         }
 
         private bool VerificaUsuarioAdmin()
-        {            
+        {
             var userId = User.Identity.GetUserId();
-            if (userId != null)
-            {
-                var user = UserManager.FindById(userId);
-                return user.Roles.Any(x => x.RoleId == "1");
+            if (userId != null) {
+            var user = UserManager.FindById(userId);
+            return user.Roles.Any(x => x.RoleId == "1");
             }
             return false;
         }

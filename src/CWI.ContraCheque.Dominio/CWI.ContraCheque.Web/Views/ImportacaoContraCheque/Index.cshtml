@@ -1,34 +1,47 @@
 ﻿@Scripts.Render("~/bundles/jquery")
-@Styles.Render("~/Content/DatePicker")
-@Scripts.Render("~/bundles/DatePicker")
+@Styles.Render("~/Content/dtpicker")
+@Scripts.Render("~/bundles/bootstrap-filestyle")
+@Styles.Render("~/Content/css")
 
 @{
     ViewBag.Title = "Importação";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>Index</h2>
-
-<h2>@ViewBag.Message</h2>
-
-<script>
-    $.fn.datepicker.defaults.format = "mm/yyyy";
-    $.fn.datepicker.noConflict();
-</script>
 
 
-@using (Html.BeginForm("Importa", "ImportacaoContraCheque", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
+<div class="box">
 
-    <div class=" panel panel-default pesquisa-contracheque">
-        <input type="file" id="fileToUpload" name="file" required="" />
+    <h2>Importe os contracheques abaixo</h2>
 
+    
 
-        <h5>Insira os Contra-cheques </h5>
-        <input data-provide="datepicker" class="btn btn-default btn-lg" value="Mês/Ano" name="competencia" id="competencia" type="text" required="">
+    @using (Html.BeginForm("Importa", "ImportacaoContraCheque", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div>
+            <input data-provide="datepicker" id="competencia" class="btn btn-default btn-lg BotaoLogin" value="Mês/Ano">
+            <div style="display:inline-block; margin:auto;">
+                <input type="file" class="filestyle" id="fileToUpload" name="file" data-classicon="icon-plus" required="" data-buttontext="Adicione o arquivo de importação" data-input="false" />
+            </div><br /><br /><br />
+            <span class="field-validation-error" id="spanfile"></span>
+            <input type="submit" id="btnSubmit" class="btn btn-lg btn-primary BotaoLogin" value="Inserir" />
+        </div>
+    }
 
+        <h2 style="color:red;">@ViewBag.Message</h2>
+</div>
 
-        <span class="field-validation-error" id="spanfile"></span>
-        <input type="submit" id="btnSubmit" value="Upload" />
-    </div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/DatePicker")
+    <script>
+        $("#competencia").datepicker({
+            format: "mm/yyyy",
+            startView: "months",
+            minViewMode: "months",
+            orientation: "right bottom",
+            language: "pt-BR"
+            
+        });
+    </script>
 }
 

@@ -13,13 +13,18 @@ namespace CWI.ContraCheque.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            /*
             routes.MapRoute(
                 name: "Login",
-                url: "/",
-                defaults: new { controller = "Login2", action = "Index" }
+                url: "",
+                defaults: new { controller = "Account", action = "Login2" }
             );
-            */
+
+            routes.MapRoute(
+                name: "404",
+                url: "home",
+                defaults: new { controller = "", action = "" }
+            );
+           
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
