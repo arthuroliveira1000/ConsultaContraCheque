@@ -44,8 +44,11 @@ namespace CWI.ContraCheque.Web.Controllers
         private bool VerificaUsuarioComum()
         {
             var userId = User.Identity.GetUserId();
+            if (userId != null) {
             var user = UserManager.FindById(userId);
             return user.Roles.Any(x => x.RoleId == "2");
+            }
+            return false;
         }
 
         public ActionResult Index()
