@@ -169,11 +169,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201506180458510_migracao.cs" />
-    <Compile Include="Migrations\201506180458510_migracao.Designer.cs">
-      <DependentUpon>201506180458510_migracao.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -262,11 +257,6 @@
       <Project>{21b73992-d269-4f99-82eb-22592784042f}</Project>
       <Name>CWI.ContraCheque.Importador</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506180458510_migracao.resx">
-      <DependentUpon>201506180458510_migracao.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
