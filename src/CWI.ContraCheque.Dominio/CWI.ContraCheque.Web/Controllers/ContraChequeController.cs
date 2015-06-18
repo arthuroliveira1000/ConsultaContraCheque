@@ -33,6 +33,7 @@ namespace CWI.ContraCheque.Web.Controllers
 
             //ESSA É UMA BASE PARA DESENVOLVER O CONTRA CHEQUE, POR ENQUANTO ID FIXO, COMPETENCIA FIXA. (PARA TESTE)                       
             ContraChequeExibicao contraChequeExibicao = new ContraChequeExibicao();
+            
             string codigoUser = User.Identity.GetUserId();
             var a = db.Users.Find(codigoUser);
             long codigoc = a.CodigoColaborador;
