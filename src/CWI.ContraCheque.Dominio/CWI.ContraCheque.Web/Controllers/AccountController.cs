@@ -99,12 +99,12 @@ namespace CWI.ContraCheque.Web.Controllers
                     if (user.Roles.Any(x => x.RoleId == "1"))
                     {
                        // return RedirectToLocal("ImportacaoContraCheque");
-                        return RedirectToAction("/ImportacaoContraCheque");
+                        return RedirectToAction("../ImportacaoContraCheque");
                     }
                     else
                     {
                         //return RedirectToLocal("ContraCheque");
-                        return RedirectToAction("/ContraCheque");
+                        return RedirectToAction("../ContraCheque");
                     }
                 }
                 else
