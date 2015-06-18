@@ -1,6 +1,8 @@
 ﻿using CWI.ContraCheque.Dominio;
 using CWI.ContraCheque.Importador;
 using CWI.ContraCheque.Web.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,16 +10,53 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace CWI.ContraCheque.Web.Controllers
 {
-    
+
     public class ImportacaoContraChequeController : Controller
     {
         private static string mensagemBag = "";
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: ImportacaoContraCheque
+
+        private ApplicationUserManager _userManager;
+
+        public ImportacaoContraChequeController()
+        {
+        }
+
+        public ImportacaoContraChequeController(ApplicationUserManager userManager)
+        {
+            UserManager = userManager;
+        }
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
+
+        private bool VerificaUsuarioAdmin()
+        {
+            var userId = User.Identity.GetUserId();
+            var user = UserManager.FindById(userId);
+            return user.Roles.Any(x => x.RoleId == "1");
+        }
+
+
         public ActionResult Index()
         {
+            if (!VerificaUsuarioAdmin())
+            {
+                return RedirectToAction("Login2", "Account");
+            }   
             ViewBag.Message = mensagemBag;
             mensagemBag = "";
             return View();
