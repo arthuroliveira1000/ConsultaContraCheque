@@ -1,7 +1,7 @@
 ﻿@model CWI.ContraCheque.Dominio.ContraChequeExibicao
-@Scripts.Render("~/bundles/jquery")
-@Styles.Render("~/Content/DatePicker")
-@Scripts.Render("~/bundles/DatePicker")
+
+@Styles.Render("~/Content/css")
+@Styles.Render("~/Content/dtpicker")
 
 <div class="organiza-divs">
     @{
@@ -235,10 +235,20 @@
 
     <div class=" panel panel-default pesquisa-contracheque">
         <h5>Contra cheques passados</h5>
-        <input data-provide="datepicker" class="btn btn-default btn-lg" value="Mês/Ano">
-        <script>
-            $.fn.datepicker.defaults.format = "mm/yyyy";
-            $.fn.datepicker.noConflict();
-        </script>
+        <input data-provide="datepicker" id="datepicker" class="btn btn-default btn-lg BotaoLogin" value="Mês/Ano">
     </div>
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/DatePicker")
+    <script>
+        $("#datepicker").datepicker({
+            format: "mm/yyyy",
+            startView: "months",
+            minViewMode: "months",
+            orientation: "right bottom",
+            language: "pt-BR"
+        });
+    </script>
+}

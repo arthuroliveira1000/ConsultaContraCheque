@@ -34,14 +34,32 @@
         text-align: center;
     }
 
-    .BotaoLogin {
+.BotaoLogin {
     width: 200px;
     background-color: rgb(245, 185, 80);
     border-color: rgb(245, 185, 80);
-    margin-bottom:40px;
-    }
+    margin-bottom: 40px;
+}
 
-    .BotaoLogin:hover {
-        background-color: black;
-        border-color: black;
-    }
+.Botoes {
+    margin-top:20px;
+    width: 400px;
+}
+
+.BotaoLogin:hover {
+    background-color: black;
+    border-color: black;
+}
+
+
+.box {
+    text-align: center;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 390px;
+    height: auto;
+    padding: 30px;
+}

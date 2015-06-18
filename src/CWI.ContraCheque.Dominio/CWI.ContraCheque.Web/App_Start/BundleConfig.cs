@@ -14,6 +14,8 @@ namespace CWI.ContraCheque.Web
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap-filestyle").Include("~/Scripts/bootstrap-filestyle.min.js"));
+
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
@@ -24,14 +26,12 @@ namespace CWI.ContraCheque.Web
                       "~/Scripts/respond.js"));
 
             // DATEPICKER - SCRIPTS 
-            bundles.Add(new ScriptBundle("~/bundles/DatePicker").Include("~/Scripts/DatePicker/bootstrap-datepicker.js"));
+            bundles.Add(new ScriptBundle("~/bundles/DatePicker")
+                .Include("~/Scripts/DatePicker/bootstrap-datepicker.js"));
 
             // DATEPICKER - BOOTSTRAP
-            bundles.Add(new StyleBundle("~/Content/DatePicker").Include(
-                      "~/Content/DatePicker/bootstrap-datepicker.css",
-                      "~/Content/DatePicker/bootstrap-datepicker.standalone.css",
-                      "~/Content/DatePicker/bootstrap-datepicker3.css",
-                      "~/Content/DatePicker/bootstrap-datepicker3.standalone.css"));
+            bundles.Add(new StyleBundle("~/Content/dtpicker").Include(
+                      "~/Content/DatePicker/bootstrap-datepicker3.css"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
