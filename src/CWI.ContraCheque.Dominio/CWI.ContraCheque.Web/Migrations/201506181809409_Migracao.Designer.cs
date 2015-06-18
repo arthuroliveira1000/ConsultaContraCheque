@@ -7,13 +7,13 @@ namespace CWI.ContraCheque.Web.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class migracao : IMigrationMetadata
+    public sealed partial class Migracao : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(migracao));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Migracao));
         
         string IMigrationMetadata.Id
         {
-            get { return "201506180458510_migracao"; }
+            get { return "201506181809409_Migracao"; }
         }
         
         string IMigrationMetadata.Source

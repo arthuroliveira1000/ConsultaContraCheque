@@ -3,7 +3,7 @@ namespace CWI.ContraCheque.Web.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class migracao : DbMigration
+    public partial class Migracao : DbMigration
     {
         public override void Up()
         {
