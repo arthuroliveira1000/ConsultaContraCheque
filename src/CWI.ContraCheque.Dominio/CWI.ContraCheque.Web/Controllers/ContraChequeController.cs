@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using Microsoft.AspNet.Identity;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -11,7 +12,6 @@ using CWI.ContraCheque.Web.Models;
 
 namespace CWI.ContraCheque.Web.Controllers
 {
-    [Authorize(Roles = "normal")]
     public class ContraChequeController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -32,8 +32,11 @@ namespace CWI.ContraCheque.Web.Controllers
             }
 
             //ESSA É UMA BASE PARA DESENVOLVER O CONTRA CHEQUE, POR ENQUANTO ID FIXO, COMPETENCIA FIXA. (PARA TESTE)                       
-            ContraChequeExibicao contraChequeExibicao = new ContraChequeExibicao();          
-            int codigoColaborador = 1895;
+            ContraChequeExibicao contraChequeExibicao = new ContraChequeExibicao();
+            string codigoUser = User.Identity.GetUserId();
+            var a = db.Users.Find(codigoUser);
+            long codigoc = a.CodigoColaborador;
+            long codigoColaborador = codigoc;
             //id variavel local
             IEnumerable<Colaborador> cola = (from colaborador in db.Colaboradors.ToList()
                                                where colaborador.CodigoColaborador == codigoColaborador
