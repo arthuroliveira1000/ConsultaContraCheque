@@ -169,9 +169,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201506171117587_MigracaoInicial.cs" />
-    <Compile Include="Migrations\201506171117587_MigracaoInicial.Designer.cs">
-      <DependentUpon>201506171117587_MigracaoInicial.cs</DependentUpon>
+    <Compile Include="Migrations\201506171756158_Migracao.cs" />
+    <Compile Include="Migrations\201506171756158_Migracao.Designer.cs">
+      <DependentUpon>201506171756158_Migracao.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -242,7 +242,6 @@
     <Content Include="Views\Conta\Edit.cshtml" />
     <Content Include="Views\Conta\Index.cshtml" />
     <Content Include="Views\ImportacaoContraCheque\Index.cshtml" />
-    <Content Include="Views\Home\Welcome.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -265,8 +264,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506171117587_MigracaoInicial.resx">
-      <DependentUpon>201506171117587_MigracaoInicial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201506171756158_Migracao.resx">
+      <DependentUpon>201506171756158_Migracao.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

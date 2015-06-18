@@ -18,7 +18,7 @@ namespace CWI.ContraCheque.Importador
         public ImportaContraCheque(DateTime competencia)
         {
             Competencia = competencia;
-            caminhoArquivo = (@"C:\Users\Giordano\Downloads\CWI\dados-importacao.txt");            
+            caminhoArquivo = (@"C:\Users\Giordano\Downloads\CWI\d2.txt");            
         }
 
         public Dictionary<string, List<object>> LerTxt()
