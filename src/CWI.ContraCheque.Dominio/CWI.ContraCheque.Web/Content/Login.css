@@ -38,6 +38,7 @@
     width: 200px;
     background-color: rgb(245, 185, 80);
     border-color: rgb(245, 185, 80);
+    margin-bottom:40px;
     }
 
     .BotaoLogin:hover {
