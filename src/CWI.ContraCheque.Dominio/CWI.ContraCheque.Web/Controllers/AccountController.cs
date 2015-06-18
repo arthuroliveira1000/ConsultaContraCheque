@@ -431,7 +431,7 @@ namespace CWI.ContraCheque.Web.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Account/Login2");
         }
 
        // GET: /Account/Register
