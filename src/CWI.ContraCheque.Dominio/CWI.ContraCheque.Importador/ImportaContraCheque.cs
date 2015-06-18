@@ -16,9 +16,10 @@ namespace CWI.ContraCheque.Importador
         private List<object> ListaColaborador_Conta = new List<object>();
 
         public ImportaContraCheque(DateTime competencia)
-        {
+        {          
             Competencia = competencia;
-            caminhoArquivo = (@"C:\Users\Giordano\Downloads\CWI\d2.txt");            
+            caminhoArquivo = AppDomain.CurrentDomain.BaseDirectory;
+            caminhoArquivo += "Arquivos_Temporarios\\importa.txt";
         }
 
         public Dictionary<string, List<object>> LerTxt()

@@ -3,20 +3,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h2>Index</h2>
+<h1>@ViewBag.Message</h1>
 
-    <input type="text" id="competencia" name="competencia" placeholder="Exemplo: 07/2014" required=""/>    
-    <input type="button" value="importa" onclick="importa()"/>
+@using (Html.BeginForm("Importa", "ImportacaoContraCheque", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" id="fileToUpload" name="file" required=""/>
+    <input type="text" id="competencia" name="competencia" placeholder="Exemplo: 07/2014" required="" />
+    <span class="field-validation-error" id="spanfile"></span>
+    <input type="submit" id="btnSubmit" value="Upload" />
+}
 
+@section Scripts {   
+}
 
-    @section Scripts {
-        <script>           
-    var importa = function () {
-        alert('oi');
-        $.post('@Url.Action("Importa", "ImportacaoContraCheque")',
-            { competencia: $("#competencia").val() })
-        .done(function () {
-            alert('camigol');
-        })
-    }
-        </script>
-    }

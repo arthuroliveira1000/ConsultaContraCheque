@@ -3,6 +3,7 @@ using CWI.ContraCheque.Importador;
 using CWI.ContraCheque.Web.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -11,32 +12,56 @@ namespace CWI.ContraCheque.Web.Controllers
 {
     public class ImportacaoContraChequeController : Controller
     {
+        private static string mensagemBag = "";
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: ImportacaoContraCheque
         public ActionResult Index()
         {
+            ViewBag.Message = mensagemBag;
+            mensagemBag = "";
             return View();
         }
-
-        public void Importa([Bind(Include = "nome")] string competencia)
+        public ActionResult Importa(HttpPostedFileBase file, string competencia)
         {
-            Dictionary<string, List<object>> dadosImportacao = new Dictionary<string, List<object>>();
+            if (file == null)
+            {
+                mensagemBag = "Selecione algum arquivo!";
+            }
+            else if (!file.FileName.Substring(file.FileName.LastIndexOf(".")).Equals(".txt"))
+            {
+                mensagemBag = "Arquivo não está no formato correto!";
+            }
+            else
+            {                
+                var path = Path.Combine(Server.MapPath("~/Arquivos_Temporarios/"), "importa.txt");
+                file.SaveAs(path);
+                ModelState.Clear();
+                mensagemBag = "Arquivo importado com sucesso!";
+                System.IO.DirectoryInfo downloadedMessageInfo = new DirectoryInfo(Server.MapPath("~/Arquivos_Temporarios/"));
 
-            string data = "01/" + competencia;
-            DateTime comp = DateTime.Parse(data);
+                Dictionary<string, List<object>> dadosImportacao = new Dictionary<string, List<object>>();
+                string data = "01/" + competencia;
+                DateTime comp = DateTime.Parse(data);
 
-            ImportaContraCheque importa = new ImportaContraCheque(comp);
-            dadosImportacao = importa.LerTxt();
+                ImportaContraCheque importa = new ImportaContraCheque(comp);
+                dadosImportacao = importa.LerTxt();
 
-            List<object> saida;
-            List<Conta> contas;
-            List<Colaborador_Conta> colaborador_conta;
-            dadosImportacao.TryGetValue("contas", out saida);
-            contas = saida.Cast<Conta>().ToList();
-            dadosImportacao.TryGetValue("colaborador_contas", out saida);
-            colaborador_conta = saida.Cast<Colaborador_Conta>().ToList();
+                List<object> saida;
+                List<Conta> contas;
+                List<Colaborador_Conta> colaborador_conta;
+                dadosImportacao.TryGetValue("contas", out saida);
+                contas = saida.Cast<Conta>().ToList();
+                dadosImportacao.TryGetValue("colaborador_contas", out saida);
+                colaborador_conta = saida.Cast<Colaborador_Conta>().ToList();
 
-            InsereOuAtualiza(comp, colaborador_conta, contas);
+                InsereOuAtualiza(comp, colaborador_conta, contas);
+
+                foreach (FileInfo arquivo in downloadedMessageInfo.GetFiles())
+                {
+                    arquivo.Delete();
+                }
+            }
+            return (Redirect("Index"));
         }
         private void InsereContas(List<Conta> contas)
         {
@@ -58,18 +83,18 @@ namespace CWI.ContraCheque.Web.Controllers
         {
             int mes = competencia.Month;
             int ano = competencia.Year;
-            long codigoColaborador = colaborador_contas.First().CodigoColaborador;   
+            long codigoColaborador = colaborador_contas.First().CodigoColaborador;
             //Pega os existentes
             var contasEcolaborador_contas = (from contas_colaborador in db.Colaborador_Conta.ToList()
-                        where contas_colaborador.CodigoColaborador == codigoColaborador
-                        where contas_colaborador.Competencia.Month == mes
-                        where contas_colaborador.Competencia.Year == ano
-                        join contaBanco in db.Contas on contas_colaborador.CodigoConta equals contaBanco.CodigoConta
-                        select new
-                        {
-                            contas_colaborador,
-                            contaBanco
-                        }).ToList();                                                 
+                                             where contas_colaborador.CodigoColaborador == codigoColaborador
+                                             where contas_colaborador.Competencia.Month == mes
+                                             where contas_colaborador.Competencia.Year == ano
+                                             join contaBanco in db.Contas on contas_colaborador.CodigoConta equals contaBanco.CodigoConta
+                                             select new
+                                             {
+                                                 contas_colaborador,
+                                                 contaBanco
+                                             }).ToList();
 
             //Se cair no if existe contas e atualiza
             if (contasEcolaborador_contas.Count > 0)
