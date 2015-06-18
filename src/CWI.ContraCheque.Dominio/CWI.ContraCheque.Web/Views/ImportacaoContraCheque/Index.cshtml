@@ -1,22 +1,45 @@
-﻿@{
+﻿@Scripts.Render("~/bundles/jquery")
+@Styles.Render("~/Content/DatePicker")
+@Scripts.Render("~/bundles/DatePicker")
+
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h2>Index</h2>
 
-    <input type="text" id="competencia" name="competencia" placeholder="Exemplo: 07/2014" required=""/>    
-    <input type="button" value="importa" onclick="importa()"/>
+<div class=" panel panel-default pesquisa-contracheque">
+    <h5>Insira os Contra-cheques </h5>
+    <input data-provide="datepicker" class="btn btn-default btn-lg" value="Mês/Ano" name="competencia" id="competencia" type="text" required="">
+   
+</div>
+<input type="button" value="importa" onclick="importa()" />
+
+<script>
+    $.fn.datepicker.defaults.format = "mm/yyyy";
+    $.fn.datepicker.noConflict();
+</script>
 
 
-    @section Scripts {
-        <script>           
-    var importa = function () {
-        alert('oi');
-        $.post('@Url.Action("Importa", "ImportacaoContraCheque")',
-            { competencia: $("#competencia").val() })
-        .done(function () {
-            alert('camigol');
-        })
-    }
-        </script>
-    }
+
+
+
+
+
+
+
+@section Scripts {
+ 
+
+
+    <script>
+        var importa = function () {
+            alert('oi');
+            $.post('@Url.Action("Importa", "ImportacaoContraCheque")',
+                { competencia: $("#competencia").val() })
+            .done(function () {
+                alert('camigol');
+            })
+        }
+    </script>
+}
