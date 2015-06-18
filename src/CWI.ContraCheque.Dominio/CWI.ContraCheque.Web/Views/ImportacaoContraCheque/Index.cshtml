@@ -19,7 +19,6 @@
     @using (Html.BeginForm("Importa", "ImportacaoContraCheque", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
 
-
         <input data-provide="datepicker" id="competencia" class="btn btn-default btn-lg BotaoLogin" value="Mês/Ano">
 
         <input type="file" class="filestyle"  id="fileToUpload" name="file" data-classicon="icon-plus" required="" data-buttontext="Adicione o arquivo de importação" data-input="false" />
@@ -40,7 +39,7 @@
             format: "mm/yyyy",
             startView: "months",
             minViewMode: "months",
-            orientation: "right bottom",
+            orientation: "auto",
             language: "pt-BR"
             
         });
