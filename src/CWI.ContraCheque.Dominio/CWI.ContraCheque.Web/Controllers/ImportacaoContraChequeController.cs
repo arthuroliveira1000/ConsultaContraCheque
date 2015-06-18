@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace CWI.ContraCheque.Web.Controllers
 {
+    [Authorize (Roles="admin")]
     public class ImportacaoContraChequeController : Controller
     {
         private static string mensagemBag = "";

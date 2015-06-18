@@ -11,16 +11,28 @@ using CWI.ContraCheque.Web.Models;
 
 namespace CWI.ContraCheque.Web.Controllers
 {
+    [Authorize(Roles = "normal")]
     public class ContraChequeController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: ContraCheque
         public ActionResult Index()
         {
+            string competencia = "";
+            DateTime comp;
+            if (competencia.Equals(""))
+            {
+                competencia = "01/" + DateTime.Now.Month + "/" + DateTime.Now.Year;
+                comp = DateTime.Parse(competencia);
+            }
+            else
+            {
+                competencia = "01/" + competencia;
+                comp = DateTime.Parse(competencia);
+            }
+
             //ESSA É UMA BASE PARA DESENVOLVER O CONTRA CHEQUE, POR ENQUANTO ID FIXO, COMPETENCIA FIXA. (PARA TESTE)                       
-            ContraChequeExibicao contraChequeExibicao = new ContraChequeExibicao();
-            string data = "01/07/2014";
-            DateTime comp = DateTime.Parse(data);
+            ContraChequeExibicao contraChequeExibicao = new ContraChequeExibicao();          
             int codigoColaborador = 1895;
             //id variavel local
             IEnumerable<Colaborador> cola = (from colaborador in db.Colaboradors.ToList()

@@ -1,214 +1,244 @@
 ﻿@model CWI.ContraCheque.Dominio.ContraChequeExibicao
+@Scripts.Render("~/bundles/jquery")
+@Styles.Render("~/Content/DatePicker")
+@Scripts.Render("~/bundles/DatePicker")
 
-@{
-    string totalProventos = "";
-    string totalDescontos = "";
-    string totalLiquido = "";
-    string SALARIO_BASE = "";
-    string SALARIO_CONTRIBINSS = "";
-    string FGTS_TOTAL = "";
-    string FGTS_BASE = "";
-    string IRRF_BASE = "";
+<div class="organiza-divs">
+    @{
 
+        string totalProventos = "";
+        string totalDescontos = "";
+        string totalLiquido = "";
+        string SALARIO_BASE = "";
+        string SALARIO_CONTRIBINSS = "";
+        string FGTS_TOTAL = "";
+        string FGTS_BASE = "";
+        string IRRF_BASE = "";
 
-    foreach (var contas in Model.Contas)
-    {
-        if (contas.Descricao.Contains("TOTAL PROVENTOS") && contas.Tipo.Contains("T"))
+        var verificaContas = Model.Contas;
+
+        if (verificaContas == null)
         {
-            totalProventos = contas.Total.ToString();
+            <div class="alert alert-danger" role="alert">Nenhuma conta cadastrada.</div>
         }
-        if (contas.Descricao.Contains("TOTAL DESCONTOS") && contas.Tipo.Contains("T"))
+        else
         {
-            totalDescontos = contas.Total.ToString();
-        }
-        if (contas.Descricao.Contains("TOTAL LIQUIDO") && contas.Tipo.Contains("L"))
-        {
-            totalLiquido = contas.Total.ToString();
-        }
-        if (contas.Descricao.Contains("Salario folha mensal") && contas.Tipo.Contains("T"))
-        {
-            SALARIO_BASE = contas.Total.ToString();
-        }
-        if (contas.Descricao.Contains("INSS") && contas.Tipo.Contains("D"))
-        {
-            SALARIO_CONTRIBINSS = contas.Base.ToString();
-        }
-        if (contas.Descricao.Contains("FGTS") && contas.Tipo.Contains("T"))
-        {
-            FGTS_TOTAL = contas.Total.ToString();
-            FGTS_BASE = contas.Base.ToString();
-        }
-        if (contas.Descricao.Contains("IRRF") && contas.Tipo.Contains("D"))
-        {
-            IRRF_BASE = contas.Base.ToString();
+            foreach (var contas in Model.Contas)
+            {
+                if (contas.Descricao.Contains("TOTAL PROVENTOS") && contas.Tipo.Contains("T"))
+                {
+                    totalProventos = contas.Total.ToString();
+                }
+                if (contas.Descricao.Contains("TOTAL DESCONTOS") && contas.Tipo.Contains("T"))
+                {
+                    totalDescontos = contas.Total.ToString();
+                }
+                if (contas.Descricao.Contains("TOTAL LIQUIDO") && contas.Tipo.Contains("L"))
+                {
+                    totalLiquido = contas.Total.ToString();
+                }
+                if (contas.Descricao.Contains("Salario folha mensal") && contas.Tipo.Contains("T"))
+                {
+                    SALARIO_BASE = contas.Total.ToString();
+                }
+                if (contas.Descricao.Contains("INSS") && contas.Tipo.Contains("D"))
+                {
+                    SALARIO_CONTRIBINSS = contas.Base.ToString();
+                }
+                if (contas.Descricao.Contains("FGTS") && contas.Tipo.Contains("T"))
+                {
+                    FGTS_TOTAL = contas.Total.ToString();
+                    FGTS_BASE = contas.Base.ToString();
+                }
+                if (contas.Descricao.Contains("IRRF") && contas.Tipo.Contains("D"))
+                {
+                    IRRF_BASE = contas.Base.ToString();
+                }
+            }
         }
     }
-}
+    <div id="contraCheque" class="panel panel-default contra-cheque">
+        <div class="panel-heading"><h3>Recibo de Pagamento de Salário</h3></div>
+        <div class="panel-body">
+            <table class="table table-condensed">
+                <tr class="active">
+                    <td>
+                        <strong>Conta</strong>
+                    </td>
+                    <td>
+                        <strong>Nome do Funcionário</strong>
+                    </td>
+                    <td>
+                        <strong>Centro de Custo</strong>
+                    </td>
+                    <td>
+                        <strong>Data de Admissão</strong>
+                    </td>
+                    <td>
+                        <strong>Conta de Pagamento</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => model.Colaborador.CodigoColaborador)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Colaborador.NomeColaborador)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Colaborador.CentroCusto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Colaborador.DataAdmissao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.BancoColaborador.NomeBanco)
+                        AG.: @Html.DisplayFor(model => model.BancoColaborador.Agencia)
+                        CONTA: @Html.DisplayFor(model => model.BancoColaborador.Conta)
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="panel-body">
+            <!-- Table -->
+            <table class="table table-condensed">
+                <tr class="active">
+                    <td>
+                        <strong>Conta</strong>
+                    </td>
+                    <td>
+                        <strong>Descricão</strong>
+                    </td>
+                    <td>
+                        <strong>Referência</strong>
+                    </td>
+                    <td>
+                        <strong>Proventos</strong>
+                    </td>
+                    <td>
+                        <strong>Descontos</strong>
+                    </td>
 
-<div class="panel panel-default contra-cheque">
-    <div class="panel-heading"><h3>Recibo de Pagamento de Salário</h3></div>
-    <div class="panel-body">
-        <table class="table table-condensed">
-            <tr class="active">
-                <td>
-                    <strong>Conta</strong>
-                </td>
-                <td>
-                    <strong>Nome do Funcionário</strong>
-                </td>
-                <td>
-                    <strong>Centro de Custo</strong>
-                </td>
-                <td>
-                    <strong>Data de Admissão</strong>
-                </td>
-                <td>
-                    <strong>Conta de Pagamento</strong>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    @Html.DisplayFor(model => model.Colaborador.CodigoColaborador)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => model.Colaborador.NomeColaborador)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => model.Colaborador.CentroCusto)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => model.Colaborador.DataAdmissao)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => model.BancoColaborador.NomeBanco)
-                    AG.: @Html.DisplayFor(model => model.BancoColaborador.Agencia)
-                    CONTA: @Html.DisplayFor(model => model.BancoColaborador.Conta)
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="panel-body">
-        <!-- Table -->
-        <table class="table table-condensed">
-            <tr class="active">
-                <td>
-                    <strong>Conta</strong>
-                </td>
-                <td>
-                    <strong>Descricão</strong>
-                </td>
-                <td>
-                    <strong>Referência</strong>
-                </td>
-                <td>
-                    <strong>Proventos</strong>
-                </td>
-                <td>
-                    <strong>Descontos</strong>
-                </td>
+                </tr>
 
-            </tr>
-            @foreach (var contas in Model.Contas)
-            {
-                if (!contas.Tipo.Contains("T") && !contas.Tipo.Contains("L") && (contas.Total != null || contas.ValorReferencia != null))
+
+                @if (verificaContas != null)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelcontas => contas.CodigoConta)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelcontas => contas.Descricao)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelcontas => contas.ValorReferencia)
-                        </td>
-                        <td>
-                            @if (contas.Tipo.Equals("P"))
-                            {
-                                @Html.DisplayFor(modelcontas => contas.Total)
-                            }
-                        </td>
-                        <td>
-                            @if (contas.Tipo.Equals("D"))
-                            {
-                                @Html.DisplayFor(modelcontas => contas.Total)
-                            }
-                        </td>
-                    </tr>
+                    foreach (var contas in Model.Contas)
+                    {
+                        if (!contas.Tipo.Contains("T") && !contas.Tipo.Contains("L") && (contas.Total != null || contas.ValorReferencia != null))
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelcontas => contas.CodigoConta)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelcontas => contas.Descricao)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelcontas => contas.ValorReferencia)
+                                </td>
+                                <td>
+                                    @if (contas.Tipo.Equals("P"))
+                                    {
+                                        @Html.DisplayFor(modelcontas => contas.Total)
+                                    }
+                                </td>
+                                <td>
+                                    @if (contas.Tipo.Equals("D"))
+                                    {
+                                        @Html.DisplayFor(modelcontas => contas.Total)
+                                    }
+                                </td>
+                            </tr>
+                        }
+
+                    }
                 }
+            </table>
+        </div>
+        <!--TOTAIS-->
+        <div class="panel-body">
+            <!-- Table -->
+            <table class="table table-condensed">
+                <tr class="active">
 
-            }
-        </table>
+                    <td>
+                        <strong>Total de Proventos</strong>
+                    </td>
+                    <td>
+                        <strong>Total de Descontos</strong>
+                    </td>
+                    <td>
+                        <strong>Valor Líquido</strong>
+                    </td>
+                </tr>
+                <tr>
+
+                    <td>
+                        @totalProventos
+                    </td>
+                    <td>
+                        @totalDescontos
+                    </td>
+                    <td>
+                        @totalLiquido
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+
+        <div class="panel-body">
+            <!-- Table -->
+            <table class="table table-condensed">
+                <tr class="active">
+                    <td>
+                        <strong>Salário Base</strong>
+                    </td>
+                    <td>
+                        <strong>Salário Contrib INSS</strong>
+                    </td>
+                    <td>
+                        <strong>Base FGTS</strong>
+                    </td>
+                    <td>
+                        <strong>Valor FGTS</strong>
+                    </td>
+                    <td>
+                        <strong>Base Cálculo IRRF</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @SALARIO_BASE
+                    </td>
+                    <td>
+                        @SALARIO_CONTRIBINSS
+                    </td>
+                    <td>
+                        @FGTS_BASE
+                    </td>
+                    <td>
+                        @FGTS_TOTAL
+                    </td>
+                    <td>
+                        @IRRF_BASE
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
-    <!--TOTAIS-->
-    <div class="panel-body">
-        <!-- Table -->
-        <table class="table table-condensed">
-            <tr class="active">
 
-                <td>
-                    <strong>Total de Proventos</strong>
-                </td>
-                <td>
-                    <strong>Total de Descontos</strong>
-                </td>
-                <td>
-                    <strong>Valor Líquido</strong>
-                </td>
-            </tr>
-            <tr>
 
-                <td>
-                    @totalProventos
-                </td>
-                <td>
-                    @totalDescontos
-                </td>
-                <td>
-                    @totalLiquido
-                </td>
 
-            </tr>
-        </table>
-    </div>
 
-    <div class="panel-body">
-        <!-- Table -->
-        <table class="table table-condensed">
-            <tr class="active">
-                <td>
-                    <strong>Salário Base</strong>
-                </td>
-                <td>
-                    <strong>Salário Contrib INSS</strong>
-                </td>
-                <td>
-                    <strong>Base FGTS</strong>
-                </td>
-                <td>
-                    <strong>Valor FGTS</strong>
-                </td>
-                <td>
-                    <strong>Base Cálculo IRRF</strong>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    @SALARIO_BASE
-                </td>
-                <td>
-                    @SALARIO_CONTRIBINSS
-                </td>
-                <td>
-                    @FGTS_BASE
-                </td>
-                <td>
-                    @FGTS_TOTAL
-                </td>
-                <td>
-                    @IRRF_BASE
-                </td>
-            </tr>
-        </table>
+    <div class=" panel panel-default pesquisa-contracheque">
+        <h5>Contra cheques passados</h5>
+        <input data-provide="datepicker" class="btn btn-default btn-lg" value="Mês/Ano">
+        <script>
+            $.fn.datepicker.defaults.format = "mm/yyyy";
+            $.fn.datepicker.noConflict();
+        </script>
     </div>
 </div>
