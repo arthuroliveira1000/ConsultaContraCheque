@@ -8,12 +8,7 @@
 }
 <h2>Index</h2>
 
-<div class=" panel panel-default pesquisa-contracheque">
-    <h5>Insira os Contra-cheques </h5>
-    <input data-provide="datepicker" class="btn btn-default btn-lg" value="Mês/Ano" name="competencia" id="competencia" type="text" required="">
-   
-</div>
-<input type="button" value="importa" onclick="importa()" />
+
 
 <script>
     $.fn.datepicker.defaults.format = "mm/yyyy";
@@ -21,25 +16,19 @@
 </script>
 
 
+@using (Html.BeginForm("Importa", "ImportacaoContraCheque", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <div class=" panel panel-default pesquisa-contracheque">
+        <input type="file" id="fileToUpload" name="file" required="" />
 
 
+        <h5>Insira os Contra-cheques </h5>
+        <input data-provide="datepicker" class="btn btn-default btn-lg" value="Mês/Ano" name="competencia" id="competencia" type="text" required="">
 
 
-
-
-
-@section Scripts {
- 
-
-
-    <script>
-        var importa = function () {
-            alert('oi');
-            $.post('@Url.Action("Importa", "ImportacaoContraCheque")',
-                { competencia: $("#competencia").val() })
-            .done(function () {
-                alert('camigol');
-            })
-        }
-    </script>
+        <span class="field-validation-error" id="spanfile"></span>
+        <input type="submit" id="btnSubmit" value="Upload" />
+    </div>
 }
+

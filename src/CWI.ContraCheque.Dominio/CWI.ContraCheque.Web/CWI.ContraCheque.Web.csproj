@@ -169,9 +169,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201506171756158_Migracao.cs" />
-    <Compile Include="Migrations\201506171756158_Migracao.Designer.cs">
-      <DependentUpon>201506171756158_Migracao.cs</DependentUpon>
+    <Compile Include="Migrations\201506180458510_migracao.cs" />
+    <Compile Include="Migrations\201506180458510_migracao.Designer.cs">
+      <DependentUpon>201506180458510_migracao.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -245,6 +245,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Arquivos_Temporarios\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -264,8 +265,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506171756158_Migracao.resx">
-      <DependentUpon>201506171756158_Migracao.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201506180458510_migracao.resx">
+      <DependentUpon>201506180458510_migracao.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

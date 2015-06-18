@@ -43,6 +43,7 @@ namespace CWI.ContraCheque.Web.Controllers
                                                  where contas_colaborador.CodigoColaborador == codigoColaborador
                                                  where contas_colaborador.Competencia == comp
                                                  join contaBanco in db.Contas on contas_colaborador.CodigoConta equals contaBanco.CodigoConta
+                                                 where contaBanco.Competencia == comp
                                                  select new
                                                  {
                                                      contas_colaborador,
