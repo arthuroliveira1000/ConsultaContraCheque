@@ -8,28 +8,26 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@ViewBag.Message</h2>
 
 <div class="box">
 
     <h2>Importe os contracheques abaixo</h2>
 
-    <h1>@ViewBag.Message</h1>
+    
 
     @using (Html.BeginForm("Importa", "ImportacaoContraCheque", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
-
-
-        <input data-provide="datepicker" id="competencia" class="btn btn-default btn-lg BotaoLogin" value="Mês/Ano">
-
-        <input type="file" class="filestyle"  id="fileToUpload" name="file" data-classicon="icon-plus" required="" data-buttontext="Adicione o arquivo de importação" data-input="false" />
-        <span class="field-validation-error" id="spanfile"></span>
-
-        <input type="submit" id="btnSubmit" class="btn btn-lg btn-primary BotaoLogin" value="Inserir" />
-
+        <div>
+            <input data-provide="datepicker" id="competencia" class="btn btn-default btn-lg BotaoLogin" value="Mês/Ano">
+            <div style="display:inline-block; margin:auto;">
+                <input type="file" class="filestyle" id="fileToUpload" name="file" data-classicon="icon-plus" required="" data-buttontext="Adicione o arquivo de importação" data-input="false" />
+            </div><br /><br /><br />
+            <span class="field-validation-error" id="spanfile"></span>
+            <input type="submit" id="btnSubmit" class="btn btn-lg btn-primary BotaoLogin" value="Inserir" />
+        </div>
     }
 
-
+        <h2 style="color:red;">@ViewBag.Message</h2>
 </div>
 
 @section Scripts {
