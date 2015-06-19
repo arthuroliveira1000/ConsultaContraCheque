@@ -52,7 +52,10 @@
                 if (contas.Descricao.Contains("FGTS") && contas.Tipo.Contains("T"))
                 {
                     FGTS_TOTAL = contas.Total.ToString();
-                    FGTS_BASE = contas.Base.ToString();
+                    if(FGTS_BASE.Equals(""))
+                    { 
+                        FGTS_BASE = contas.Base.ToString();
+                    }
                 }
                 if (contas.Descricao.Contains("IRRF") && contas.Tipo.Contains("D"))
                 {
