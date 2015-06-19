@@ -191,6 +191,9 @@
     <Content Include="Content\DatePicker\bootstrap-datepicker3.min.css" />
     <Content Include="Content\DatePicker\bootstrap-datepicker3.standalone.css" />
     <Content Include="Content\DatePicker\bootstrap-datepicker3.standalone.min.css" />
+    <Content Include="Content\Images\background.png" />
+    <Content Include="Content\Images\cwi_logo.png" />
+    <Content Include="Content\Images\swirl_pattern.png" />
     <Content Include="Content\Login.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
