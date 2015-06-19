@@ -10,21 +10,17 @@
 
 
 <div class="box">
-
-    <h3>Importe os contracheques abaixo</h3>
-
-    
-
+    <div class="alert alert-info" role="alert"><h4>Importação de contra cheque</h4></div>
+    <br><br />
     @using (Html.BeginForm("Importa", "ImportacaoContraCheque", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         <div>
-
             <div style="display:inline-block; margin:auto;">
-                <input type="file" class="filestyle" id="fileToUpload" name="file" data-classicon="icon-plus" required="" data-buttontext="Adicione o arquivo de importação" data-input="false" />
-            </div><br /><br /><br />
+                <input type="file" class="filestyle btn" id="fileToUpload" name="file" data-classicon="icon-plus" required="" data-buttontext="Adicione o arquivo de importação" data-input="false" />
+            </div><br><br />
+            <input data-provide="datepicker" id="competencia" name="competencia" class="btn Botaofile" value="Mês/Ano"><br><br/>
+            <input type="submit" id="btnSubmit" class="btn btn-lg btn-primary Botaofile" value="Inserir" />
             <span class="field-validation-error" id="spanfile"></span>
-            <input data-provide="datepicker" id="competencia" name="competencia" class="btn BotaoLogin" value="Mês/Ano">
-            <input type="submit" id="btnSubmit" class="btn btn-lg btn-primary BotaoLogin" value="Inserir" />
         </div>
     }
 

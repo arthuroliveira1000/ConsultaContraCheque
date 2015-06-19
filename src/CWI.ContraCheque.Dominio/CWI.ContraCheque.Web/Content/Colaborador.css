@@ -3,18 +3,12 @@
     margin-right: auto;
     width: 80%;
     height: auto;
-    -webkit-box-shadow: 0 0 5px 2px #fff;
-    -moz-box-shadow: 0 0 5px 2px #fff;
-    box-shadow: 0 0 5px 2px #fff;
     float: right;
 }
 
 .pesquisa-contracheque {
     padding: 10px;
     width: 18%;
-    -webkit-box-shadow: 0 0 5px 2px #fff;
-    -moz-box-shadow: 0 0 5px 2px #fff;
-    box-shadow: 0 0 5px 2px #fff;
     float: left;
     text-align: center;
 }
@@ -27,6 +21,7 @@
 
 
 .box {
+    background-color: white;
     text-align: center;
     margin-top: 50px;
     margin-left: auto;
