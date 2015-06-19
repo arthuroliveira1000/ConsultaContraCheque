@@ -17,5 +17,10 @@ namespace CWI.ContraCheque.Dominio
         //Exemplo de dado em CentroCusto = ADMINISTRAÇÃO CWICG
         public string CentroCusto { get; set; }
         public DateTime DataAdmissao { get; set; }
+        public string DataAdmissaoExibicao { 
+        get
+        {
+           return DataAdmissao.ToString("dd/MM/yyyy");
+        }}
     }
 }
