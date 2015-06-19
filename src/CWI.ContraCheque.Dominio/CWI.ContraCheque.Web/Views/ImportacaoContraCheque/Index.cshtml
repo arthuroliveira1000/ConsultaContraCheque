@@ -18,13 +18,6 @@
     @using (Html.BeginForm("Importa", "ImportacaoContraCheque", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
 
-        <input data-provide="datepicker" id="competencia" class="btn btn-default btn-lg BotaoLogin" value="Mês/Ano">
-
-        <input type="file" class="filestyle"  id="fileToUpload" name="file" data-classicon="icon-plus" required="" data-buttontext="Adicione o arquivo de importação" data-input="false" />
-        <span class="field-validation-error" id="spanfile"></span>
-
-        <input type="submit" id="btnSubmit" class="btn btn-lg btn-primary BotaoLogin" value="Inserir" />
-
         <div>
             <input data-provide="datepicker" id="competencia" class="btn btn-default btn-lg BotaoLogin" value="Mês/Ano">
             <div style="display:inline-block; margin:auto;">

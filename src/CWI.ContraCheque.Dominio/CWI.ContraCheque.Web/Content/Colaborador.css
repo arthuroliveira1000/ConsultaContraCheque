@@ -11,7 +11,7 @@
 
 .pesquisa-contracheque {
     padding: 10px;
-    width: 20%;
+    width: 18%;
     -webkit-box-shadow: 0 0 5px 2px #fff;
     -moz-box-shadow: 0 0 5px 2px #fff;
     box-shadow: 0 0 5px 2px #fff;
@@ -22,4 +22,24 @@
     padding-top: 40px;
     width: auto;
     height: auto;
+}
+
+
+.box {
+    text-align: center;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 390px;
+    height: auto;
+    padding: 30px;
+}
+
+.Botao-datepicker {
+    background-color: rgb(245, 185, 80) !important;
+    border-color: rgb(245, 185, 80) !important;
+     white-space: normal;
+    width: 100%;
 }
