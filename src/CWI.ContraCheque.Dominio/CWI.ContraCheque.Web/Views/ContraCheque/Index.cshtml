@@ -232,23 +232,26 @@
 
 
 
-
-    <div class=" panel panel-default pesquisa-contracheque">
-        <div class="alert alert-info" role="alert">Mês e ano do contra cheque desejado</div>
-        <input data-provide="datepicker" id="datepicker"  class=" btn Botao-datepicker" value="Exemplo: 07/2014">
+    @using (Html.BeginForm("Index", "ContraCheque", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class=" panel panel-default pesquisa-contracheque">
+            <div class="alert alert-info" role="alert">Mês e ano do contra cheque desejado</div>
+            <input data-provide="datepicker" id="datepicker" name="competencia" class=" btn Botao-datepicker" value="Exemplo: 07/2014">
+            <input type="submit" value="Pesquisar" />
+        </div>    
+       
+    }
     </div>
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/DatePicker")
-    <script>
-        $("#datepicker").datepicker({
-            format: "mm/yyyy",
-            startView: "months",
-            minViewMode: "months",
-            orientation: "auto",
-            language: "pt-BR"
-        });
-    </script>
-}
+    @section Scripts {
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/DatePicker")
+        <script>
+            $("#datepicker").datepicker({
+                format: "mm/yyyy",
+                startView: "months",
+                minViewMode: "months",
+                orientation: "auto",
+                language: "pt-BR"
+            });
+        </script>
+    }

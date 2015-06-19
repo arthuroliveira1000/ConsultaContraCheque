@@ -51,16 +51,14 @@ namespace CWI.ContraCheque.Web.Controllers
             return false;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(string competencia)
         {
             if (!VerificaUsuarioComum())
             {
                 return RedirectToAction("Login2", "Account");
-            }   
-
-            string competencia = "";
+            }            
             DateTime comp;
-            if (competencia.Equals(""))
+            if (competencia == null)
             {
                 competencia = "01/" + DateTime.Now.Month + "/" + DateTime.Now.Year;
                 comp = DateTime.Parse(competencia);
@@ -119,7 +117,7 @@ namespace CWI.ContraCheque.Web.Controllers
                     }
                 }
                 return View(contraChequeExibicao);
-            }
+            }          
             return View(new ContraChequeExibicao());
         }
     }
