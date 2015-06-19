@@ -3,6 +3,10 @@
 @Styles.Render("~/Content/css")
 @Styles.Render("~/Content/dtpicker")
 
+@{
+    ViewBag.Title = "Contra Cheque";
+}
+
 <div class="organiza-divs">
     @{
 
@@ -234,8 +238,8 @@
 
 
     <div class=" panel panel-default pesquisa-contracheque">
-        <div class="alert alert-info" role="alert">Mês e ano do contra cheque desejado</div>
-        <input data-provide="datepicker" id="datepicker"  class=" btn Botao-datepicker" value="Exemplo: 07/2014">
+        <div class="alert alert-info" role="alert">Selecione uma data</div>
+        <input  id="datepicker" class="btn BotaoLogin" value="Exemplo: 07/2014">
     </div>
 </div>
 

@@ -16,6 +16,7 @@
     -moz-box-shadow: 0 0 5px 2px #fff;
     box-shadow: 0 0 5px 2px #fff;
     float: left;
+    text-align: center;
 }
 
 .organiza-divs {
@@ -40,6 +41,6 @@
 .Botao-datepicker {
     background-color: rgb(245, 185, 80) !important;
     border-color: rgb(245, 185, 80) !important;
-     white-space: normal;
+    white-space: normal;
     width: 100%;
 }

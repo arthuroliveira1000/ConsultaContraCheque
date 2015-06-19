@@ -27,7 +27,8 @@ namespace CWI.ContraCheque.Web
 
             // DATEPICKER - SCRIPTS 
             bundles.Add(new ScriptBundle("~/bundles/DatePicker")
-                .Include("~/Scripts/DatePicker/bootstrap-datepicker.js"));
+                .Include("~/Scripts/DatePicker/bootstrap-datepicker.js",
+                "~/Scripts/DatePicker/bootstrap-datepicker.pt-BR.min.js"));
 
             // DATEPICKER - BOOTSTRAP
             bundles.Add(new StyleBundle("~/Content/dtpicker").Include(
