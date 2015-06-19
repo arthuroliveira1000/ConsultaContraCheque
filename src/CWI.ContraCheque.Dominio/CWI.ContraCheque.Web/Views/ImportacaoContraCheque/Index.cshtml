@@ -16,9 +16,9 @@
     {
         <div>
             <div style="display:inline-block; margin:auto;">
-                <input type="file" class="filestyle btn" id="fileToUpload" name="file" data-classicon="icon-plus" required="" data-buttontext="Adicione o arquivo de importação" data-input="false" />
+            <input type="file" class="filestyle btn" id="fileToUpload" name="file" data-classicon="icon-plus" required="" data-buttontext="Adicione o arquivo de importação" data-input="false" />
             </div><br><br />
-            <input data-provide="datepicker" id="competencia" name="competencia" class="btn Botaofile" value="Mês/Ano"><br><br/>
+            <input data-provide="datepicker" id="competencia" name="competencia" class="btn Botaofile" value="@DateTime.Now.Month/@DateTime.Now.Year"><br><br/>
             <input type="submit" id="btnSubmit" class="btn btn-lg btn-primary Botaofile" value="Inserir" />
             <span class="field-validation-error" id="spanfile"></span>
         </div>
